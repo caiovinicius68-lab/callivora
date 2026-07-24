@@ -1511,3 +1511,203 @@ background:#09090e;
 z-index:10;
 
 }
+
+/* ============================
+   MOBILE APP MODE
+============================ */
+
+@media(max-width:760px){
+
+body{
+    overflow-x:hidden;
+}
+
+
+/* sidebar vira topo */
+
+.app-shell{
+    display:block;
+}
+
+
+.sidebar,
+.global-sidebar{
+
+    position:relative;
+    width:100%;
+    height:auto;
+
+    padding:15px;
+
+    border-right:none;
+    border-bottom:1px solid rgba(139,61,255,.25);
+
+}
+
+
+/* marca menor */
+
+.brand{
+
+    margin-bottom:15px;
+
+}
+
+
+.brand-mark{
+
+    width:38px;
+    height:38px;
+
+}
+
+
+
+/* menu horizontal */
+
+.sidebar-nav,
+.global-menu{
+
+    display:flex;
+
+    flex-direction:row;
+
+    overflow-x:auto;
+
+    gap:8px;
+
+}
+
+
+.nav-item,
+.global-menu a{
+
+    min-width:max-content;
+
+    padding:10px 14px;
+
+    font-size:14px;
+
+}
+
+
+
+/* esconder status */
+
+.sidebar-status,
+.global-sidebar-footer{
+
+    display:none;
+
+}
+
+
+
+/* conteúdo */
+
+.main-content{
+
+    padding:15px;
+
+}
+
+
+
+/* hero */
+
+.hero{
+
+    min-height:auto;
+
+    padding:30px 20px;
+
+    border-radius:22px;
+
+}
+
+
+.hero h1{
+
+    font-size:34px;
+
+}
+
+
+.hero-subtitle{
+
+    font-size:16px;
+
+}
+
+
+
+/* cards */
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+/* chat */
+
+.chat-panel{
+
+    padding:18px;
+
+    border-radius:20px;
+
+}
+
+
+.chat-header h2{
+
+    font-size:24px;
+
+}
+
+
+/* caixa de pergunta */
+
+.ask-box,
+.agent-input{
+
+    grid-template-columns:1fr;
+
+    padding:12px;
+
+}
+
+
+
+.send-button{
+
+    width:100%;
+
+}
+
+
+
+/* mensagens */
+
+.messages,
+.agent-history{
+
+    max-height:none;
+
+}
+
+
+.message-content{
+
+    max-width:90%;
+
+    font-size:15px;
+
+}
+
+
+
+}
