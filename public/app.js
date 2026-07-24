@@ -686,9 +686,3 @@ checkHealth();
 
 autoResizeInput();
 
-@media(max-width:760px){
-
-...
-}
-console.log("APP JS CARREGOU");
-console.log("CHAT FORM:", document.querySelector("#chatForm"));
