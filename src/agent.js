@@ -1,21 +1,74 @@
-
-const knowledge = {
-  tarot: "Conhecimento sobre arcanos, tiragens, simbologia e interpretação como ferramenta de reflexão.",
-  cristais: "Informações sobre cristais, história, simbolismos e usos tradicionais.",
-  conteudo: "Estratégias de TikTok, Instagram, Reels, Shorts, roteiros e retenção.",
-  vendas: "Estratégias de posicionamento, clientes, ofertas e crescimento."
-};
-
-export function askCalLivora(question) {
+function answerQuestion(question) {
   const q = question.toLowerCase();
 
   if (q.includes("tarot") || q.includes("tarô")) {
-    return "Para conteúdo de tarot, use ganchos fortes nos primeiros segundos, como: 'Escolha uma carta e veja a mensagem que apareceu para você'. Foque em retenção, comentários e conexão com o público.";
+    return `
+🔮 Estratégia CalLivora:
+
+Para crescer com tarot:
+- Use vídeos de escolha ("Escolha uma carta")
+- Comece com um gancho forte nos primeiros 3 segundos
+- Gere curiosidade
+- Termine com CTA para comentar
+
+Exemplo:
+"Essa carta apareceu para você por um motivo..."
+`;
   }
 
   if (q.includes("tiktok") || q.includes("instagram")) {
-    return "Analise formatos virais, copie estruturas que funcionam e adapte para sua identidade. Use gancho inicial, história curta e chamada para ação.";
+    return `
+📈 Estratégia de crescimento:
+
+Analise vídeos virais do nicho.
+Copie a estrutura, não o conteúdo.
+
+Modelo:
+Gancho → História → Entrega → CTA.
+
+Teste vários formatos.
+`;
   }
 
-  return "Sou o CalLivora AI. Posso ajudar com estratégias de conteúdo, tendências, crescimento, clientes e conhecimento especializado.";
+  return `
+✨ Eu sou o CalLivora AI.
+
+Posso ajudar com:
+🔮 Tarot
+💎 Cristais
+🕯 Simbolismos
+📱 TikTok
+📸 Instagram
+🎬 Conteúdo
+🚀 Clientes
+💰 Estratégias de venda
+`;
 }
+
+
+function makeProspectingPlan(nicho) {
+  return `
+Plano de prospecção para ${nicho}:
+
+1. Encontrar perfis ativos
+2. Analisar conteúdo
+3. Criar proposta personalizada
+4. Apresentar oportunidade
+`;
+}
+
+
+function researchQueries(topic) {
+  return [
+    `${topic} tendências TikTok`,
+    `${topic} Instagram viral`,
+    `${topic} melhores criadores`
+  ];
+}
+
+
+export {
+  answerQuestion,
+  makeProspectingPlan,
+  researchQueries
+};
