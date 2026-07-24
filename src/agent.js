@@ -67,8 +67,23 @@ function researchQueries(topic) {
 }
 
 
+function researchQueries(topic) {
+  return [
+    `${topic} tendências TikTok`,
+    `${topic} Instagram viral`,
+    `${topic} melhores criadores`
+  ];
+}
+
+
+function askCalLivora(question) {
+  return answerQuestion(question);
+}
+
+
 export {
   answerQuestion,
   makeProspectingPlan,
-  researchQueries
+  researchQueries,
+  askCalLivora
 };
