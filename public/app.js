@@ -685,3 +685,8 @@ input.focus();
 checkHealth();
 
 autoResizeInput();
+
+@media(max-width:760px){
+
+...
+}

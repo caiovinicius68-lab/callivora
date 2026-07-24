@@ -1882,3 +1882,7 @@ p{
 
 
 }
+
+git add .
+git commit -m "Ajuste final responsivo mobile"
+git push
