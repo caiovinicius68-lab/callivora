@@ -2288,3 +2288,22 @@ a,
 }
 
 }
+@media(max-width:760px){
+
+body,
+html,
+#root{
+    overflow-y:auto !important;
+    height:auto !important;
+    position:static !important;
+}
+
+main,
+.app-shell,
+.main-content,
+.internal-page{
+    overflow:visible !important;
+    height:auto !important;
+}
+
+}
