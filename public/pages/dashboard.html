@@ -12,21 +12,16 @@
 
 </head>
 
-
 <body>
 
-
 <div class="internal-page">
-
 
 <main class="main-content">
 
 
 <section class="hero">
 
-
 <div class="hero-content">
-
 
 <span class="eyebrow">
 CAL LIVORA AI
@@ -52,15 +47,15 @@ Converse com sua inteligência artificial e transforme ideias em estratégias.
 </div>
 
 
-
-<textarea 
+<textarea
 id="question"
 placeholder="Digite sua pergunta para a IA..."
 rows="1"></textarea>
 
 
 
-<button 
+<button
+id="sendButton"
 class="send-button"
 type="submit">
 
@@ -69,15 +64,12 @@ Enviar
 </button>
 
 
-
 </form>
 
 
 </div>
 
-
 </section>
-
 
 
 
@@ -91,14 +83,43 @@ Enviar
 Conversa com IA
 </h2>
 
+
+<button id="newChatButton" class="secondary-button">
+Nova conversa
+</button>
+
+
 </div>
 
 
 
 <div id="messages" class="messages">
 
+<article class="message assistant-message">
+
+<div class="avatar">
+✦
 </div>
 
+
+<div class="message-content">
+
+<strong>
+CalLivora
+</strong>
+
+
+<p>
+Olá! Como posso ajudar você hoje?
+</p>
+
+
+</div>
+
+</article>
+
+
+</div>
 
 
 </section>
@@ -114,11 +135,10 @@ Conversa com IA
 <div class="section-heading">
 
 <h2>
-Ações rápidas
+Comece por aqui
 </h2>
 
 </div>
-
 
 
 
@@ -126,10 +146,10 @@ Ações rápidas
 
 
 
-
-
-<a href="/pages/tendencias.html" class="feature-card">
-
+<a 
+href="/pages/tendencias.html"
+class="feature-card"
+data-prompt="Quero analisar tendências e oportunidades">
 
 <div class="card-icon">
 📈
@@ -139,7 +159,7 @@ Ações rápidas
 <div>
 
 <strong>
-Tendências
+Radar de Tendências
 </strong>
 
 
@@ -150,15 +170,20 @@ Descubra oportunidades
 
 </div>
 
+<div class="card-arrow">
+→
+</div>
+
 
 </a>
 
 
 
 
-
-<a href="/pages/criador.html" class="feature-card">
-
+<a
+href="/pages/criador.html"
+class="feature-card"
+data-prompt="Quero criar uma estratégia de conteúdo">
 
 <div class="card-icon">
 🎨
@@ -168,7 +193,7 @@ Descubra oportunidades
 <div>
 
 <strong>
-Criador de conteúdo
+Criador de Conteúdo
 </strong>
 
 
@@ -180,14 +205,21 @@ Crie ideias e estratégias
 </div>
 
 
+<div class="card-arrow">
+→
+</div>
+
+
 </a>
 
 
 
 
 
-<a href="/pages/clientes.html" class="feature-card">
-
+<a
+href="/pages/clientes.html"
+class="feature-card"
+data-prompt="Quero organizar meus clientes">
 
 <div class="card-icon">
 👥
@@ -202,16 +234,19 @@ Clientes
 
 
 <small>
-Organize seus contatos
+Gerencie relacionamentos
 </small>
 
 
 </div>
 
 
+<div class="card-arrow">
+→
+</div>
+
+
 </a>
-
-
 
 
 
@@ -228,12 +263,9 @@ Organize seus contatos
 </div>
 
 
-
-
 <script src="/app.js"></script>
 
 
 </body>
-
 
 </html>
