@@ -4,62 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CalLivora Dashboard</title>
 
-<style>
-
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#0b1020;
-color:white;
-}
-
-
-.container{
-
-padding:40px;
-
-}
-
-
-.card{
-
-background:#151c35;
-border-radius:20px;
-padding:25px;
-margin:20px 0;
-
-}
-
-
-h1{
-
-font-size:36px;
-
-}
-
-
-.grid{
-
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-
-}
-
-
-.item{
-
-background:#20294a;
-padding:25px;
-border-radius:15px;
-
-}
-
-
-</style>
+<link rel="stylesheet" href="/style.css">
 
 </head>
 
@@ -67,100 +16,224 @@ border-radius:15px;
 <body>
 
 
-<div class="container">
+<div class="internal-page">
+
+
+<main class="main-content">
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<span class="eyebrow">
+CAL LIVORA AI
+</span>
 
 
 <h1>
-🚀 CalLivora AI
+Seu centro de inteligência criativa
 </h1>
 
 
-<p>
-Seu centro de crescimento digital.
+<p class="hero-subtitle">
+Converse com sua inteligência artificial e transforme ideias em estratégias.
 </p>
 
 
 
-<div class="grid">
+<form id="chatForm" class="ask-box">
 
 
-<div class="item">
+<div class="ask-icon">
+✨
+</div>
 
+
+
+<textarea 
+id="question"
+placeholder="Digite sua pergunta para a IA..."
+rows="1"></textarea>
+
+
+
+<button 
+class="send-button"
+type="submit">
+
+Enviar
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="chat-panel">
+
+
+<div class="chat-header">
+
+<h2>
+Conversa com IA
+</h2>
+
+</div>
+
+
+
+<div id="messages" class="messages">
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+<section class="resources-section">
+
+
+<div class="section-heading">
+
+<h2>
+Ações rápidas
+</h2>
+
+</div>
+
+
+
+
+<div class="cards">
+
+
+
+
+
+<a href="/pages/tendencias.html" class="feature-card">
+
+
+<div class="card-icon">
 📈
+</div>
 
-<h2>
+
+<div>
+
+<strong>
 Tendências
-</h2>
-
-<p>
-Veja o que está crescendo.
-</p>
-
-</div>
+</strong>
 
 
-
-<div class="item">
-
-🎬
-
-<h2>
-Criador
-</h2>
-
-<p>
-Gere roteiros virais.
-</p>
-
-</div>
-
-
-
-
-<div class="item">
-
-💰
-
-<h2>
-Monetização
-</h2>
-
-<p>
-Transforme audiência em negócio.
-</p>
-
-</div>
-
+<small>
+Descubra oportunidades
+</small>
 
 
 </div>
 
 
+</a>
 
-<div class="card">
 
-<h2>
-🧠 Inteligência ativa
-</h2>
 
-<p>
-Trend Engine ✅
-<br>
-Creator Engine ✅
-<br>
-Strategist ✅
-<br>
-Research Engine ✅
-</p>
+
+
+<a href="/pages/criador.html" class="feature-card">
+
+
+<div class="card-icon">
+🎨
+</div>
+
+
+<div>
+
+<strong>
+Criador de conteúdo
+</strong>
+
+
+<small>
+Crie ideias e estratégias
+</small>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+<a href="/pages/clientes.html" class="feature-card">
+
+
+<div class="card-icon">
+👥
+</div>
+
+
+<div>
+
+<strong>
+Clientes
+</strong>
+
+
+<small>
+Organize seus contatos
+</small>
+
+
+</div>
+
+
+</a>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+</main>
 
 
 </div>
 
 
 
-</div>
+
+<script src="/app.js"></script>
 
 
 </body>
+
 
 </html>
