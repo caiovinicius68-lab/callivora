@@ -2112,4 +2112,60 @@ h2{
 }
 
 
+
+/* =================================
+   TENDÊNCIAS MOBILE - AJUSTE SEGURO
+================================= */
+
+@media (max-width:760px){
+
+    .container{
+        padding:18px !important;
+    }
+
+
+    .trend-options,
+    .trends-grid,
+    .cards{
+        display:flex !important;
+        flex-direction:column !important;
+        width:100% !important;
+    }
+
+
+    .trend-option,
+    .option,
+    .feature-card{
+        width:100% !important;
+        min-width:0 !important;
+    }
+
+
+    #generateTrendButton{
+        width:100% !important;
+        margin-top:20px !important;
+        min-height:55px;
+    }
+
+
+    #trendResult{
+        width:100% !important;
+        height:auto !important;
+        overflow:visible !important;
+    }
+
+
+    #trendAIResult{
+        width:100% !important;
+        height:auto !important;
+        overflow:visible !important;
+    }
+
+
+    textarea,
+    input,
+    select{
+        width:100% !important;
+    }
+
 }
