@@ -1,0 +1,34 @@
+{
+  "name": "callivora",
+  "version": "1.0.0",
+  "description": "CalLivora: agente MCP e web para prospecção, marketing e conteúdo social.",
+  "type": "module",
+  "bin": {
+    "callivora": "./src/cli.js",
+    "callivora-mcp": "./src/mcp-stdio.js"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "cli": "node src/cli.js",
+    "mcp": "node src/mcp-stdio.js",
+    "start:mcp": "node src/mcp-stdio.js",
+    "check": "node --check src/server.js && node --check src/cli.js && node --check src/mcp-stdio.js && node --check src/agent.js && node --check src/mcp-core.js",
+    "test:tools": "node src/dev-smoke-test.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "prospecting",
+    "marketing",
+    "ai-agent",
+    "tiktok",
+    "instagram",
+    "facebook",
+    "whatsapp"
+  ],
+  "author": "CalLivora",
+  "license": "MIT"
+}

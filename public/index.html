@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CalLivora — Agente de Prospecção</title>
+    <meta name="description" content="CalLivora: agente de IA para prospecção, marketing, TikTok, Instagram, Facebook e WhatsApp." />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="badge">MCP • API • Cloud • Terminal</div>
+        <h1>CalLivora</h1>
+        <p class="subtitle">Seu agente roxo de prospecção, marketing e conteúdo para encontrar clientes e vender melhor.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#chat">Começar agora</a>
+          <a class="button ghost" href="#mcp">Ver MCP</a>
+        </div>
+        <div class="glow-card">
+          <span>Status</span>
+          <strong id="statusText">Verificando...</strong>
+        </div>
+      </section>
+
+      <section class="grid two">
+        <article class="panel" id="chat">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Chat estratégico</p>
+              <h2>Pergunte qualquer coisa</h2>
+            </div>
+            <span class="pill">IA + fallback local</span>
+          </div>
+          <textarea id="message" placeholder="Ex: Quero prospectar restaurantes da minha cidade pelo Instagram. Me dê um plano."></textarea>
+          <div class="row">
+            <input id="context" placeholder="Contexto opcional: cidade, nicho, oferta..." />
+            <button id="askButton" class="button primary">Perguntar</button>
+          </div>
+          <pre id="answer" class="output">A resposta aparecerá aqui.</pre>
+        </article>
+
+        <article class="panel gradient-panel">
+          <p class="eyebrow">Plano rápido</p>
+          <h2>Gerador de prospecção</h2>
+          <div class="stack">
+            <input id="planBusiness" placeholder="Negócio/oferta: landing pages, social media..." />
+            <input id="planCity" placeholder="Cidade/região" />
+            <input id="planChannel" placeholder="Canal: Google Maps, Instagram, WhatsApp..." />
+            <input id="planGoal" placeholder="Objetivo: marcar reuniões, vender diagnóstico..." />
+            <button id="planButton" class="button light">Gerar plano</button>
+          </div>
+          <pre id="planOutput" class="output dark">Seu plano vai aparecer aqui.</pre>
+        </article>
+      </section>
+
+      <section class="panel" id="research">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Botão de pesquisa</p>
+            <h2>Encontrar leads online</h2>
+          </div>
+          <span class="pill">Google • Maps • Instagram</span>
+        </div>
+        <div class="research-box">
+          <input id="researchSegment" placeholder="Segmento: restaurantes, clínicas, salões..." />
+          <input id="researchCity" placeholder="Cidade: São Paulo, Brasília, Goiânia..." />
+          <input id="researchAvatar" placeholder="Avatar: empresas com Instagram fraco e WhatsApp ativo" />
+          <button id="researchButton" class="button primary">Pesquisar oportunidades</button>
+        </div>
+        <div id="researchResults" class="cards"></div>
+      </section>
+
+      <section class="grid two" id="mcp">
+        <article class="panel">
+          <p class="eyebrow">MCP HTTP</p>
+          <h2>Use por URL na cloud</h2>
+          <p>Depois de subir no Render, use a URL abaixo no cliente MCP compatível.</p>
+          <code id="mcpUrl">/mcp</code>
+          <button id="copyMcp" class="button ghost">Copiar URL MCP</button>
+          <pre class="output">claude mcp add --transport http callivora https://SEU-DOMINIO.onrender.com/mcp</pre>
+        </article>
+
+        <article class="panel terminal-panel">
+          <p class="eyebrow">Terminal</p>
+          <h2>Rodar localmente</h2>
+          <p>Para usuário técnico, o CalLivora também roda no terminal.</p>
+          <pre class="terminal">npm install
+npm run cli
+
+# MCP local
+npm run mcp</pre>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>CalLivora</span> — interface, API, MCP e terminal em um único projeto.
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

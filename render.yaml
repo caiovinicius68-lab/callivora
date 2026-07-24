@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: callivora
+    runtime: node
+    plan: starter
+    autoDeploy: false
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: APP_NAME
+        value: CalLivora
+      - key: OPENAI_MODEL
+        value: gpt-5-mini
+      - key: OPENAI_API_KEY
+        sync: false
