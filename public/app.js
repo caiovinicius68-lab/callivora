@@ -690,3 +690,5 @@ autoResizeInput();
 
 ...
 }
+console.log("APP JS CARREGOU");
+console.log("CHAT FORM:", document.querySelector("#chatForm"));
