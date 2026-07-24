@@ -22,7 +22,6 @@ CalLivora - Assistente IA
 <div class="app-shell">
 
 
-
 <aside class="sidebar">
 
 
@@ -31,7 +30,6 @@ CalLivora - Assistente IA
 <span class="brand-mark">
 ✦
 </span>
-
 
 <span>
 
@@ -44,7 +42,6 @@ AI Growth Studio
 </small>
 
 </span>
-
 
 </a>
 
@@ -96,7 +93,6 @@ AI Growth Studio
 </nav>
 
 
-
 <div class="sidebar-status">
 
 <span class="status-dot"></span>
@@ -113,14 +109,10 @@ IA online
 
 </div>
 
-
 </div>
 
 
-
 </aside>
-
-
 
 
 
@@ -130,7 +122,6 @@ IA online
 
 
 <section class="hero">
-
 
 <div class="hero-content">
 
@@ -152,9 +143,7 @@ Escolha um agente e converse com uma inteligência especializada.
 
 </div>
 
-
 </section>
-
 
 
 
@@ -164,6 +153,7 @@ Escolha um agente e converse com uma inteligência especializada.
 
 
 <div class="chat-header">
+
 
 <div>
 
@@ -180,7 +170,14 @@ Conversa com o especialista
 </div>
 
 
+
+<button id="newChatButton" class="secondary-button">
+Nova conversa
+</button>
+
+
 </div>
+
 
 
 
@@ -188,7 +185,10 @@ Conversa com o especialista
 <div class="cards">
 
 
-<div class="feature-card">
+
+<div class="feature-card"
+onclick="selecionarAgente('strategist')">
+
 
 <span class="card-icon">
 🧠
@@ -200,7 +200,6 @@ Conversa com o especialista
 <strong>
 Estrategista
 </strong>
-
 
 <small>
 Negócios e posicionamento
@@ -215,7 +214,9 @@ Negócios e posicionamento
 
 
 
-<div class="feature-card">
+<div class="feature-card"
+onclick="selecionarAgente('marketing')">
+
 
 <span class="card-icon">
 🚀
@@ -227,7 +228,6 @@ Negócios e posicionamento
 <strong>
 Marketing
 </strong>
-
 
 <small>
 Vendas e crescimento
@@ -242,8 +242,9 @@ Vendas e crescimento
 
 
 
+<div class="feature-card"
+onclick="selecionarAgente('mentor')">
 
-<div class="feature-card">
 
 <span class="card-icon">
 🧬
@@ -256,7 +257,6 @@ Vendas e crescimento
 Mentor
 </strong>
 
-
 <small>
 Aprendizado e evolução
 </small>
@@ -268,6 +268,42 @@ Aprendizado e evolução
 </div>
 
 
+</div>
+
+
+
+
+
+
+<div id="messages" class="messages">
+
+
+<article class="message assistant-message">
+
+
+<div class="avatar">
+✦
+</div>
+
+
+<div class="message-content">
+
+
+<strong>
+CalLivora
+</strong>
+
+
+<p>
+Escolha um especialista ou faça sua pergunta.
+</p>
+
+
+</div>
+
+
+</article>
+
 
 </div>
 
@@ -275,7 +311,8 @@ Aprendizado e evolução
 
 
 
-<form class="ask-box">
+
+<form id="chatForm" class="ask-box">
 
 
 <span class="ask-icon">
@@ -283,17 +320,28 @@ Aprendizado e evolução
 </span>
 
 
-<textarea placeholder="Pergunte ao especialista..."></textarea>
+
+<textarea 
+id="question"
+placeholder="Pergunte ao especialista..."
+rows="1"></textarea>
 
 
-<button class="send-button">
+
+
+<button 
+id="sendButton"
+class="send-button"
+type="submit">
 
 Enviar ➜
 
 </button>
 
 
+
 </form>
+
 
 
 
@@ -307,6 +355,9 @@ Enviar ➜
 
 
 </div>
+
+
+<script src="/app.js"></script>
 
 
 </body>
