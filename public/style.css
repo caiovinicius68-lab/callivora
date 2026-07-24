@@ -2307,3 +2307,56 @@ main,
 }
 
 }
+/* ======================================
+   CAL LIVORA - CORREÇÃO PÁGINAS INTERNAS
+====================================== */
+
+@media(max-width:760px){
+
+.internal-page,
+.internal-page > div,
+.page-content,
+.dashboard-content,
+.workspace,
+.main-content {
+
+    height:auto !important;
+    min-height:100vh !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+
+}
+
+
+/* libera navegação mobile */
+
+.global-menu,
+.sidebar-nav {
+
+    overflow-x:auto !important;
+    pointer-events:auto !important;
+
+}
+
+
+.global-menu a,
+.nav-item,
+button,
+a {
+
+    pointer-events:auto !important;
+
+}
+
+
+/* evita retorno visual ao dashboard */
+
+#root {
+
+    height:auto !important;
+    min-height:100vh !important;
+    overflow:visible !important;
+
+}
+
+}
