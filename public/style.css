@@ -1883,6 +1883,104 @@ p{
 
 }
 
-git add .
-git commit -m "Ajuste final responsivo mobile"
-git push
+/* =================================
+   TENDÊNCIAS MOBILE APP
+================================= */
+
+@media(max-width:760px){
+
+/* área principal */
+
+.chat-panel{
+
+    padding:18px !important;
+
+}
+
+
+
+/* cards de escolha */
+
+.trend-option,
+.feature-card{
+
+    width:100% !important;
+
+    min-height:90px;
+
+    display:flex !important;
+
+    align-items:center;
+
+}
+
+
+
+/* seleção */
+
+.selected{
+
+    transform:none !important;
+
+}
+
+
+
+/* botão gerar */
+
+#generateTrendButton{
+
+    display:block !important;
+
+    width:100% !important;
+
+    height:55px;
+
+    margin-top:20px;
+
+    font-size:17px;
+
+}
+
+
+
+/* caixa de resultado */
+
+#trendResult{
+
+    display:block;
+
+    width:100% !important;
+
+    padding:18px !important;
+
+    margin-top:20px;
+
+}
+
+
+
+/* texto da IA */
+
+#trendAIResult{
+
+    font-size:15px !important;
+
+    line-height:1.6;
+
+    word-break:break-word;
+
+}
+
+
+
+/* evita elementos cortados */
+
+body{
+
+    overflow-x:hidden;
+
+}
+
+
+}
