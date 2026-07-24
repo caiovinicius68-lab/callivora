@@ -1,168 +1,754 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CalLivora — inteligência artificial estratégica para conteúdo, clientes e crescimento.">
-  <title>CalLivora AI Growth Studio</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-  <div class="app-shell">
-    <aside class="sidebar" aria-label="Navegação principal">
-      <a class="brand" href="#dashboard" aria-label="CalLivora - início">
-        <span class="brand-mark">✦</span>
-        <span>
-          <strong>CalLivora</strong>
-          <small>AI Growth Studio</small>
-        </span>
-      </a>
 
-      <nav class="sidebar-nav">
-<a class="nav-item active" href="/">
-<span>🏠</span> Dashboard
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<meta name="description"
+content="CalLivora — equipe de inteligência artificial estratégica para crescimento, conteúdo e clientes.">
+
+
+<title>
+CalLivora AI Growth Studio
+</title>
+
+
+<link rel="stylesheet" href="/style.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="app-shell">
+
+
+
+<aside class="sidebar">
+
+
+<a class="brand" href="/" aria-label="CalLivora">
+
+<span class="brand-mark">
+✦
+</span>
+
+
+<span>
+
+<strong>
+CalLivora
+</strong>
+
+
+<small>
+AI Growth Studio
+</small>
+
+
+</span>
+
+
 </a>
+
+
+
+
+<nav class="sidebar-nav">
+
+
+<a class="nav-item active" href="/">
+
+<span>
+🏠
+</span>
+
+Dashboard
+
+</a>
+
+
 
 <a class="nav-item" href="/pages/assistente.html">
-<span>🔮</span> Assistente IA
+
+<span>
+🔮
+</span>
+
+Assistente IA
+
 </a>
+
+
+
 
 <a class="nav-item" href="/pages/tendencias.html">
-<span>📈</span> Tendências
+
+<span>
+📈
+</span>
+
+Tendências
+
 </a>
+
+
+
 
 <a class="nav-item" href="/pages/criador.html">
-<span>🎬</span> Criador
+
+<span>
+🎬
+</span>
+
+Criador
+
 </a>
+
+
+
 
 <a class="nav-item" href="/pages/redes.html">
-<span>📱</span> Redes Sociais
+
+<span>
+📱
+</span>
+
+Redes Sociais
+
 </a>
+
+
+
 
 <a class="nav-item" href="/pages/clientes.html">
-<span>🚀</span> Clientes
+
+<span>
+🚀
+</span>
+
+Clientes
+
 </a>
+
+
+
 
 <a class="nav-item" href="/pages/conhecimento.html">
-<span>💎</span> Conhecimento
+
+<span>
+💎
+</span>
+
+Conhecimento
+
 </a>
+
+
+
 
 <a class="nav-item" href="/pages/monetizacao.html">
-<span>💰</span> Monetização
+
+<span>
+💰
+</span>
+
+Monetização
+
 </a>
 
-      <div class="sidebar-status">
-        <span id="statusDot" class="status-dot"></span>
-        <div>
-          <strong id="statusText">Verificando...</strong>
-          <small>Motor CalLivora</small>
-        </div>
-      </div>
-    </aside>
 
-    <main class="main-content" id="dashboard">
-      <section class="hero" id="assistente">
-        <div class="hero-glow hero-glow-one"></div>
-        <div class="hero-glow hero-glow-two"></div>
 
-        <div class="hero-content">
-          <span class="eyebrow">Inteligência estratégica para crescer</span>
-          <h1>Transforme conhecimento em audiência, clientes e crescimento.</h1>
-          <p class="hero-subtitle">Sua inteligência artificial estratégica para conteúdo, redes sociais, vendas, tarot, cristais e simbologia.</p>
+</nav>
 
-       
-          <p class="input-hint">Pressione <strong>Enter</strong> para enviar e <strong>Shift + Enter</strong> para quebrar a linha.</p>
-        </div>
-      </section>
 
-      <section id="chatPanel" class="chat-panel" aria-live="polite">
-        <div class="chat-header">
-          <div>
-            <span class="eyebrow">Assistente IA</span>
-            <h2>Conversa com o CalLivora</h2>
-          </div>
-          <button id="newChatButton" class="secondary-button" type="button">Nova conversa</button>
-        </div>
 
-        <div id="messages" class="messages" role="log" aria-label="Histórico da conversa">
-          <article class="message assistant-message welcome-message">
-            <div class="avatar">✦</div>
-            <div class="message-content">
-              <strong>CalLivora</strong>
-              <p>Estou pronto. Conte seu nicho, objetivo ou desafio e eu transformo isso em uma estratégia prática.</p>
-            </div>
-          </article>
-        </div>
 
-        <div id="typingIndicator" class="typing-indicator" hidden>
-          <span></span><span></span><span></span>
-          <em>CalLivora está analisando...</em>
-        </div>
-<div id="typingIndicator" class="typing-indicator" hidden>
-  <span></span><span></span><span></span>
-  <em>CalLivora está analisando...</em>
+
+<div class="sidebar-status">
+
+
+<span
+id="statusDot"
+class="status-dot">
+</span>
+
+
+
+<div>
+
+<strong id="statusText">
+Verificando...
+</strong>
+
+
+<small>
+Motor CalLivora
+</small>
+
+
 </div>
 
 
-<form id="chatForm" class="ask-box" autocomplete="off">
-  <span class="ask-icon" aria-hidden="true">🔍</span>
+</div>
 
-  <textarea
-    id="question"
-    name="question"
-    rows="1"
-    maxlength="5000"
-    placeholder="Pergunte ao CalLivora..."
-    aria-label="Digite sua pergunta para o CalLivora"
-    required
-  ></textarea>
 
-  <button id="sendButton" class="send-button" type="submit">
-    <span class="send-label">Enviar</span>
-    <span aria-hidden="true">➜</span>
-  </button>
+</aside>
+
+
+
+
+
+
+<main class="main-content">
+
+
+
+<section class="hero" id="dashboard">
+
+
+<div class="hero-glow hero-glow-one"></div>
+
+<div class="hero-glow hero-glow-two"></div>
+
+
+
+
+<div class="hero-content">
+
+
+
+<span class="eyebrow">
+Sua equipe de inteligência artificial
+</span>
+
+
+
+<h1>
+Especialistas em IA trabalhando junto com você.
+</h1>
+
+
+
+<p class="hero-subtitle">
+
+Escolha um especialista e transforme ideias em estratégias,
+conteúdo, vendas e crescimento.
+
+</p>
+
+
+
+
+
+<div class="agents hero-agents">
+
+
+
+<div class="agent-card">
+
+
+<h2>
+🧠 Estrategista
+</h2>
+
+
+<p>
+Negócios, posicionamento e crescimento.
+</p>
+
+
+
+<a href="/pages/assistente.html"
+class="send-button">
+
+Conversar
+
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="agent-card">
+
+
+<h2>
+🚀 Marketing
+</h2>
+
+
+<p>
+Conteúdo, anúncios e vendas.
+</p>
+
+
+
+<a href="/pages/assistente.html"
+class="send-button">
+
+Conversar
+
+</a>
+
+
+</div>
+
+
+
+
+
+<div class="agent-card">
+
+
+<h2>
+🧬 Mentor
+</h2>
+
+
+<p>
+Aprendizado e evolução estratégica.
+</p>
+
+
+
+<a href="/pages/assistente.html"
+class="send-button">
+
+Conversar
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<p class="input-hint">
+
+Escolha seu especialista e comece uma conversa inteligente.
+
+</p>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+<section id="chatPanel" class="chat-panel" aria-live="polite">
+
+
+<div class="chat-header">
+
+
+<div>
+
+<span class="eyebrow">
+Assistente IA
+</span>
+
+
+<h2>
+Conversa com o CalLivora
+</h2>
+
+
+</div>
+
+
+
+<button
+id="newChatButton"
+class="secondary-button"
+type="button">
+
+Nova conversa
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div id="messages"
+class="messages"
+role="log">
+
+
+
+<article class="message assistant-message welcome-message">
+
+
+<div class="avatar">
+✦
+</div>
+
+
+
+<div class="message-content">
+
+
+<strong>
+CalLivora
+</strong>
+
+
+<p>
+Escolha um especialista ou conte seu objetivo.
+Vou transformar isso em uma estratégia prática.
+</p>
+
+
+</div>
+
+
+
+</article>
+
+
+
+</div>
+
+
+
+
+
+<div id="typingIndicator"
+class="typing-indicator"
+hidden>
+
+
+<span></span>
+<span></span>
+<span></span>
+
+
+<em>
+CalLivora está analisando...
+</em>
+
+
+</div>
+
+
+
+
+
+
+<form
+id="chatForm"
+class="ask-box"
+autocomplete="off">
+
+
+
+<span class="ask-icon">
+🔍
+</span>
+
+
+
+
+<textarea
+
+id="question"
+
+name="question"
+
+rows="1"
+
+maxlength="5000"
+
+placeholder="Pergunte ao especialista..."
+
+required>
+
+</textarea>
+
+
+
+
+<button
+id="sendButton"
+class="send-button"
+type="submit">
+
+
+<span class="send-label">
+Enviar
+</span>
+
+
+<span>
+➜
+</span>
+
+
+</button>
+
+
+
 </form>
-      </section>
 
-      <section class="resources-section" id="recursos">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Atalhos estratégicos</span>
-            <h2>Por onde você quer começar?</h2>
-          </div>
-          <p>Escolha um caminho e o CalLivora prepara a pergunta para você.</p>
-        </div>
 
-        <div class="cards">
-          <button class="feature-card" type="button" data-prompt="Analise meu nicho e me dê 5 formatos de conteúdo com potencial de retenção para Instagram Reels e TikTok.">
-            <span class="card-icon">🔥</span>
-            <span><strong>Radar de Tendências</strong><small>Descubra formatos com potencial viral</small></span>
-            <span class="card-arrow">↗</span>
-          </button>
 
-          <button class="feature-card" type="button" data-prompt="Crie um roteiro de vídeo curto com gancho forte, desenvolvimento, CTA e legenda para o meu nicho.">
-            <span class="card-icon">🎬</span>
-            <span><strong>Criador de Conteúdo</strong><small>Roteiros, ideias e calendários</small></span>
-            <span class="card-arrow">↗</span>
-          </button>
+</section>
 
-          <button class="feature-card" type="button" data-prompt="Monte uma estratégia de prospecção para conseguir clientes, com mensagem inicial, follow-up e oferta.">
-            <span class="card-icon">🚀</span>
-            <span><strong>Clientes</strong><small>Estratégias de prospecção e vendas</small></span>
-            <span class="card-arrow">↗</span>
-          </button>
 
-          <button class="feature-card" type="button" data-prompt="Crie uma estratégia de conteúdo educativo para tarot, cristais e simbologia, com posicionamento ético e CTA para consultas ou produtos.">
-            <span class="card-icon">💎</span>
-            <span><strong>Conhecimento</strong><small>Tarot, cristais, símbolos e estudos</small></span>
-            <span class="card-arrow">↗</span>
-          </button>
-        </div>
-      </section>
-    </main>
-  </div>
 
-  <noscript>Ative o JavaScript para conversar com o CalLivora.</noscript>
-  <script src="/app.js"></script>
+
+
+
+<section class="resources-section">
+
+
+
+<div class="section-heading">
+
+
+<div>
+
+<span class="eyebrow">
+Atalhos estratégicos
+</span>
+
+
+<h2>
+Por onde você quer começar?
+</h2>
+
+
+</div>
+
+
+<p>
+Escolha um caminho e o CalLivora prepara a estratégia.
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="cards">
+
+
+
+
+
+<button
+class="feature-card"
+type="button"
+data-prompt="Analise meu nicho e crie uma estratégia de conteúdo para Instagram.">
+
+
+<span class="card-icon">
+🔥
+</span>
+
+
+<span>
+
+<strong>
+Radar de Tendências
+</strong>
+
+
+<small>
+Formatos com potencial de alcance
+</small>
+
+
+</span>
+
+
+<span class="card-arrow">
+↗
+</span>
+
+
+</button>
+
+
+
+
+
+
+
+
+<button
+class="feature-card"
+type="button"
+data-prompt="Crie um roteiro de vídeo curto com gancho forte, desenvolvimento e CTA.">
+
+
+<span class="card-icon">
+🎬
+</span>
+
+
+<span>
+
+<strong>
+Criador de Conteúdo
+</strong>
+
+
+<small>
+Roteiros e ideias
+</small>
+
+
+</span>
+
+
+<span class="card-arrow">
+↗
+</span>
+
+
+</button>
+
+
+
+
+
+
+
+
+<button
+class="feature-card"
+type="button"
+data-prompt="Monte uma estratégia para conquistar clientes usando redes sociais.">
+
+
+<span class="card-icon">
+🚀
+</span>
+
+
+<span>
+
+<strong>
+Clientes
+</strong>
+
+
+<small>
+Prospecção e vendas
+</small>
+
+
+</span>
+
+
+<span class="card-arrow">
+↗
+</span>
+
+
+</button>
+
+
+
+
+
+
+
+
+<button
+class="feature-card"
+type="button"
+data-prompt="Crie uma estratégia de posicionamento e autoridade.">
+
+
+<span class="card-icon">
+💎
+</span>
+
+
+<span>
+
+<strong>
+Conhecimento
+</strong>
+
+
+<small>
+Aprendizado e autoridade
+</small>
+
+
+</span>
+
+
+<span class="card-arrow">
+↗
+</span>
+
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+
+
+<noscript>
+Ative o JavaScript para usar o CalLivora.
+</noscript>
+
+
+
+<script src="/app.js"></script>
+
+
+
 </body>
+
 </html>

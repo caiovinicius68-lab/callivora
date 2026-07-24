@@ -2,388 +2,605 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CalLivora - Criador</title>
+<title>CalLivora - Agentes IA</title>
 
 <link rel="stylesheet" href="/style.css">
 
-<style>
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1020;
-    color: white;
-}
-
-.container {
-    padding: 40px;
-}
-
-h1 {
-    font-size: 36px;
-}
-
-.card {
-    background: #151c35;
-    padding: 25px;
-    border-radius: 20px;
-    margin-top: 20px;
-}
-
-label {
-    display: block;
-    margin-top: 20px;
-    font-weight: 600;
-}
-
-select,
-input,
-textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border: none;
-    background: #20294a;
-    color: white;
-}
-
-textarea {
-    resize: vertical;
-}
-
-button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    background: #6d5dfc;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-button:disabled {
-    opacity: .6;
-    cursor: wait;
-}
-
-.result {
-    background: #10162c;
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 20px;
-}
-
-#creatorAIResult {
-    margin-top: 20px;
-    line-height: 1.7;
-}
-
-#creatorAIResult h2 {
-    margin-top: 28px;
-    color: white;
-}
-
-#creatorAIResult h3 {
-    margin-top: 24px;
-    color: #b879ff;
-}
-
-#creatorAIResult h4 {
-    margin-top: 20px;
-    color: white;
-}
-
-#creatorAIResult strong {
-    color: white;
-}
-
-#creatorAIResult hr {
-    border: none;
-    border-top: 1px solid rgba(255,255,255,.08);
-    margin: 25px 0;
-}
-
-.ai-list-item {
-    margin: 6px 0;
-}
-
-</style>
-
 </head>
 
-<body class="internal-page">
 
-<div class="container">
+<body>
 
-<h1>🎬 Creator Studio</h1>
 
-<p>
-Transforme tendências em conteúdos que crescem.
+<div class="app-shell">
+
+
+<aside class="sidebar">
+
+<a class="brand" href="/">
+
+<span class="brand-mark">✦</span>
+
+<span>
+
+<strong>CalLivora</strong>
+
+<small>AI Growth Studio</small>
+
+</span>
+
+</a>
+
+
+
+<nav class="sidebar-nav">
+
+
+<a class="nav-item" href="/">
+🏠 Dashboard
+</a>
+
+
+<a class="nav-item" href="/pages/assistente.html">
+🔮 Assistente IA
+</a>
+
+
+<a class="nav-item" href="/pages/tendencias.html">
+📈 Tendências
+</a>
+
+
+<a class="nav-item active" href="/pages/criador.html">
+🤖 Agentes IA
+</a>
+
+
+<a class="nav-item" href="/pages/redes.html">
+📱 Redes Sociais
+</a>
+
+
+<a class="nav-item" href="/pages/monetizacao.html">
+💰 Monetização
+</a>
+
+
+<a class="nav-item" href="/pages/clientes.html">
+🚀 Clientes
+</a>
+
+
+<a class="nav-item" href="/pages/conhecimento.html">
+💎 Conhecimento
+</a>
+
+
+</nav>
+
+
+<div class="sidebar-status">
+
+<span class="status-dot"></span>
+
+<div>
+
+<strong>
+Motor CalLivora
+</strong>
+
+<small>
+IA Online
+</small>
+
+</div>
+
+</div>
+
+
+</aside>
+
+
+
+
+
+<main class="main-content">
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<span class="eyebrow">
+Equipe de Agentes IA
+</span>
+
+
+<h1>
+Escolha o especialista que vai trabalhar com você.
+</h1>
+
+
+<p class="hero-subtitle">
+Estratégia, marketing e evolução em uma conversa inteligente.
 </p>
 
-<div class="card">
 
-<h2>Criar novo conteúdo</h2>
-
-<label for="creatorPlatform">
-Plataforma
-</label>
-
-<select id="creatorPlatform">
-    <option>TikTok</option>
-    <option>Instagram Reels</option>
-    <option>YouTube Shorts</option>
-</select>
+</div>
 
 
-<label for="creatorNiche">
-Nicho
-</label>
-
-<input
-    id="creatorNiche"
-    type="text"
-    placeholder="Ex: Tarot, espiritualidade, negócios..."
->
+</section>
 
 
-<label for="creatorGoal">
-Objetivo
-</label>
 
-<select id="creatorGoal">
-    <option>Crescer seguidores</option>
-    <option>Vender produto</option>
-    <option>Gerar autoridade</option>
-    <option>Criar comunidade</option>
-</select>
+<section class="chat-panel">
 
 
-<label for="creatorTopic">
-Tema do vídeo
-</label>
+<div class="chat-header">
+
+<div>
+
+<span class="eyebrow">
+Especialistas CalLivora
+</span>
+
+
+<h2>
+Selecione um agente
+</h2>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="cards">
+
+
+<button class="feature-card agent-choice" data-agent="Estrategista">
+
+<span class="card-icon">
+🧠
+</span>
+
+
+<div>
+
+<strong>
+Estrategista
+</strong>
+
+<small>
+Negócios, posicionamento e crescimento
+</small>
+
+</div>
+
+<span class="card-arrow">
+↗
+</span>
+
+
+</button>
+
+
+
+
+<button class="feature-card agent-choice" data-agent="Marketing">
+
+<span class="card-icon">
+🚀
+</span>
+
+
+<div>
+
+<strong>
+Marketing
+</strong>
+
+<small>
+Conteúdo, anúncios e vendas
+</small>
+
+</div>
+
+<span class="card-arrow">
+↗
+</span>
+
+
+</button>
+
+
+
+
+
+<button class="feature-card agent-choice" data-agent="Mentor">
+
+
+<span class="card-icon">
+🧬
+</span>
+
+
+<div>
+
+<strong>
+Mentor
+</strong>
+
+<small>
+Aprendizado e evolução
+</small>
+
+</div>
+
+<span class="card-arrow">
+↗
+</span>
+
+
+</button>
+
+
+</div>
+
+
+
+<div id="selectedAgent"
+style="margin-top:25px;color:#c894ff;font-weight:bold;">
+
+Nenhum agente selecionado
+
+</div>
+
+
+<div id="agentChat" class="agent-history">
+
+</div>
+
+
+
+<form id="agentForm" class="ask-box agent-input">
+
+<span class="ask-icon">
+🔍
+</span>
+
 
 <textarea
-    id="creatorTopic"
-    rows="4"
-    placeholder="Ex: Uma mensagem de tarot sobre amor"
+id="agentQuestion"
+placeholder="Converse com o agente escolhido..."
+required
 ></textarea>
 
 
-<button id="generateCreatorButton" type="button">
-🚀 Gerar roteiro
+
+<button class="send-button" type="submit">
+
+Enviar ➜
+
 </button>
 
+
+</form>
+
+</section>
+
+
+</main>
+
+
 </div>
 
 
-<div class="result">
-
-<h2>Resultado da IA</h2>
-
-<div id="creatorAIResult">
-    🎯 Preencha os campos acima e clique em <strong>Gerar roteiro</strong>.
-</div>
-
-</div>
-
-</div>
 
 
 <script>
 
-function formatCreatorResponse(text) {
 
-    let html = String(text || "");
+let selectedAgent = null;
 
-    html = html
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
 
-    html = html.replace(/^---$/gm, "<hr>");
+function formatResponse(text){
 
-    html = html.replace(/^### (.+)$/gm, "<h4>$1</h4>");
-    html = html.replace(/^## (.+)$/gm, "<h3>$1</h3>");
-    html = html.replace(/^# (.+)$/gm, "<h2>$1</h2>");
+let html = String(text || "");
 
-    html = html.replace(
-        /\*\*(.+?)\*\*/g,
-        "<strong>$1</strong>"
-    );
 
-    html = html.replace(
-        /^- (.+)$/gm,
-        '<div class="ai-list-item">• $1</div>'
-    );
+html = html
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;");
 
-    html = html.replace(/\n/g, "<br>");
 
-    return html;
+html = html.replace(
+/\*\*(.*?)\*\*/g,
+"<strong>$1</strong>"
+);
+
+
+html = html.replace(
+/### (.*?)(<br>|$)/g,
+"<h3>$1</h3>"
+);
+
+
+html = html.replace(
+/## (.*?)(<br>|$)/g,
+"<h2>$1</h2>"
+);
+
+
+html = html.replace(
+/\n/g,
+"<br>"
+);
+
+
+return html;
+
 }
 
 
-const generateCreatorButton =
-    document.getElementById("generateCreatorButton");
 
 
-generateCreatorButton.addEventListener("click", async () => {
 
-    const platform =
-        document.getElementById("creatorPlatform").value;
-
-    const niche =
-        document.getElementById("creatorNiche").value.trim();
-
-    const goal =
-        document.getElementById("creatorGoal").value;
-
-    const topic =
-        document.getElementById("creatorTopic").value.trim();
-
-    const result =
-        document.getElementById("creatorAIResult");
+document
+.querySelectorAll(".agent-choice")
+.forEach(card=>{
 
 
-    if (!niche) {
-        alert("Digite o nicho.");
-        return;
-    }
-
-    if (!topic) {
-        alert("Digite o tema do vídeo.");
-        return;
-    }
+card.addEventListener("click",()=>{
 
 
-    generateCreatorButton.disabled = true;
-    generateCreatorButton.textContent = "⏳ Criando roteiro...";
-
-    result.innerHTML =
-        "🧠 CalLivora está desenvolvendo seu conteúdo...";
+selectedAgent =
+card.dataset.agent;
 
 
-    try {
+document
+.getElementById("selectedAgent")
+.innerHTML =
+"Agente selecionado: " + selectedAgent;
 
-        const prompt = `
-Você está no Creator Studio do CalLivora.
 
-Crie um conteúdo estratégico usando estas informações:
 
-PLATAFORMA:
-${platform}
+});
 
-NICHO:
-${niche}
 
-OBJETIVO:
-${goal}
+});
 
-TEMA:
-${topic}
 
-Entregue:
 
-## 🎯 TÍTULO
-Crie um título forte.
 
-## 🔥 GANCHO
-Crie um gancho forte para os primeiros segundos.
 
-## 🎬 ROTEIRO
-Crie o roteiro completo adaptado para ${platform}.
 
-## 🎥 CENAS
-Divida o conteúdo em cenas ou blocos quando fizer sentido.
 
-## 📝 LEGENDA
-Crie uma legenda pronta para publicação.
+document
+.getElementById("agentForm")
+.addEventListener("submit",async(e)=>{
 
-## 📢 CTA
-Crie uma chamada para ação alinhada ao objetivo: ${goal}.
 
-## 💡 DIREÇÃO CRIATIVA
-Explique rapidamente como gravar ou produzir o conteúdo.
+e.preventDefault();
 
-Seja específico para o nicho "${niche}".
-Evite respostas genéricas.
+
+
+const input =
+document.getElementById("agentQuestion");
+
+
+const question =
+input.value.trim();
+
+
+
+if(!question){
+
+return;
+
+}
+
+
+
+if(!selectedAgent){
+
+
+alert("Escolha um agente primeiro.");
+
+return;
+
+
+}
+
+
+
+const chat =
+document.getElementById("agentChat");
+
+
+
+
+// mensagem usuário
+
+chat.innerHTML += `
+
+<div class="message user-message">
+
+<div class="message-content">
+
+<strong>Você</strong>
+
+<p>${question}</p>
+
+</div>
+
+</div>
+
 `;
 
 
-        const response = await fetch("/api/chat", {
 
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                message: prompt,
-                context: "[]"
-            })
-
-        });
+input.value = "";
 
 
-        const data = await response.json();
+
+// carregando
+
+const loading =
+document.createElement("div");
 
 
-        if (!response.ok) {
-
-            throw new Error(
-                data.error || "Erro ao gerar roteiro."
-            );
-
-        }
+loading.className =
+"message assistant-message";
 
 
-        const answer =
-            String(data.text || "").trim();
+loading.innerHTML = `
+
+<div class="message-content">
+
+<strong>
+CalLivora ${selectedAgent}
+</strong>
+
+<p>
+🧠 Analisando...
+</p>
+
+</div>
+
+`;
 
 
-        if (!answer) {
-
-            throw new Error(
-                "A IA não retornou um roteiro."
-            );
-
-        }
+chat.appendChild(loading);
 
 
-        result.innerHTML =
-            formatCreatorResponse(answer);
+
+try{
 
 
-    } catch (error) {
+const response =
+await fetch("/api/chat",{
 
-        console.error(error);
 
-        result.innerHTML =
-            "<strong>❌ Não foi possível gerar:</strong> " +
-            error.message;
+method:"POST",
 
-    } finally {
 
-        generateCreatorButton.disabled = false;
+headers:{
 
-        generateCreatorButton.textContent =
-            "🚀 Gerar roteiro";
+"Content-Type":"application/json"
 
-    }
+},
+
+
+body:JSON.stringify({
+
+message:
+
+`Você é o agente ${selectedAgent} do CalLivora.
+
+Atue como especialista nessa área.
+
+Pergunta:
+${question}`
+
+
+})
+
 
 });
+
+
+
+const data =
+await response.json();
+
+
+
+loading.remove();
+
+
+
+chat.innerHTML += `
+
+<div class="message assistant-message">
+
+<div class="message-content">
+
+
+<strong>
+CalLivora ${selectedAgent}
+</strong>
+
+
+<p>
+${formatResponse(data.text || "Sem resposta")}
+</p>
+
+
+</div>
+
+</div>
+
+`;
+
+
+
+chat.scrollTop =
+chat.scrollHeight;
+
+
+
+}catch(error){
+
+
+
+loading.remove();
+
+
+
+chat.innerHTML += `
+
+<div class="message assistant-message">
+
+<div class="message-content">
+
+<strong>
+Erro
+</strong>
+
+<p>
+Não foi possível conectar com a IA.
+</p>
+
+</div>
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+});
+
 
 </script>
 
 
-<script src="/js/sidebar.js"></script>
 
 </body>
+
 </html>

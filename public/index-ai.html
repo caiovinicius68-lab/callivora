@@ -1,8 +1,152 @@
+<link rel="stylesheet" href="style.css">
 
-<section class="ai-box">
-<h2>🔮 Assistente CalLivora AI</h2>
-<input id="question" placeholder="Pergunte ao CalLivora...">
-<button onclick="perguntar()">Pesquisar</button>
+
+<section class="ai-panel">
+
+
+<h1>🤖 CalLivora AI</h1>
+
+<p class="subtitle">
+Escolha um especialista e converse com sua inteligência.
+</p>
+
+
+
+<div class="agents">
+
+
+<div class="agent-card">
+
+<h2>🧠 Estrategista</h2>
+
+<p>
+Negócios, crescimento e posicionamento.
+</p>
+
+<button onclick="selecionarAgente('strategist')">
+Usar Agente
+</button>
+
+</div>
+
+
+
+
+<div class="agent-card">
+
+<h2>🚀 Marketing</h2>
+
+<p>
+Vendas, anúncios e estratégias digitais.
+</p>
+
+<button onclick="selecionarAgente('marketing')">
+Usar Agente
+</button>
+
+</div>
+
+
+
+
+<div class="agent-card">
+
+<h2>🧬 Mentor</h2>
+
+<p>
+Aprendizado e evolução pessoal.
+</p>
+
+<button onclick="selecionarAgente('mentor')">
+Usar Agente
+</button>
+
+</div>
+
+
+</div>
+
+
+
+
+<section class="ai-box" id="assistente">
+
+
+<h2>
+💬 Conversar com o agente
+</h2>
+
+
+
 <div id="result"></div>
+
+
+
+<div id="messages">
+
+
+<article class="message assistant-message">
+
+<div class="avatar">
+✦
+</div>
+
+
+<div class="message-content">
+
+<strong>
+CalLivora
+</strong>
+
+<p>
+Escolha um agente e comece a conversa.
+</p>
+
+
+</div>
+
+</article>
+
+
+</div>
+
+
+
+
+
+<form id="chatForm">
+
+
+<input
+id="question"
+placeholder="Digite sua pergunta..."
+autocomplete="off"
+/>
+
+
+<button 
+id="sendButton"
+type="submit">
+
+Enviar
+
+</button>
+
+
+</form>
+
+
+
+<div id="typingIndicator" hidden>
+CalLivora pensando...
+</div>
+
+
 </section>
+
+
+</section>
+
+
+
 <script src="app.js"></script>

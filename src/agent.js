@@ -1,31 +1,51 @@
 import "dotenv/config";
-import OpenAI from "openai";
 
+import { runAI } from "./providers/router.js";
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+import { buscarContextoCliente } from "./memory-manager.js";
 
 
 
-async function askOpenAI(messages) {
+async function askAI(messages){
 
-  const response =
-    await client.chat.completions.create({
+  return runAI(messages,"auto");
 
-      model: "gpt-4o-mini",
-
-      messages,
-
-      temperature: 0.7
-
-    });
+}
 
 
-  return response
-    .choices[0]
-    .message
-    .content;
+
+
+export async function answerQuestion({
+
+  message,
+
+  cliente_id = null,
+
+  context = ""
+
+}) {
+
+
+
+let memoria = "";
+
+
+
+if(cliente_id){
+
+
+const dadosCliente =
+await buscarContextoCliente(cliente_id);
+
+
+
+memoria =
+JSON.stringify(
+dadosCliente,
+null,
+2
+);
+
 
 }
 
@@ -33,19 +53,15 @@ async function askOpenAI(messages) {
 
 
 
+return askAI([
 
-export async function answerQuestion({
-  message,
-  context = ""
-}) {
-
-
-return askOpenAI([
 
 {
+
 role:"system",
 
 content:
+
 `
 Você é o CalLivora AI.
 
@@ -66,17 +82,31 @@ Responda sempre em português do Brasil.
 
 Seja claro, profissional e prático.
 
+
 Contexto:
+
 ${context}
 
+
+Memória do cliente:
+
+${memoria}
+
 `
+
 },
 
 
+
 {
+
 role:"user",
+
 content:message
+
 }
+
+
 
 ]);
 
@@ -90,15 +120,17 @@ content:message
 
 
 
-export async function makeProspectingPlan(data={}) {
+export async function makeProspectingPlan(data={}){
 
 
-return askOpenAI([
+return askAI([
 
 {
+
 role:"system",
 
 content:
+
 `
 Você é especialista em prospecção comercial.
 
@@ -113,15 +145,20 @@ Crie planos contendo:
 - próximos passos.
 
 Seja estratégico e aplicável.
+
 `
 
 },
 
 
 {
+
 role:"user",
+
 content:JSON.stringify(data,null,2)
+
 }
+
 
 ]);
 
@@ -135,15 +172,17 @@ content:JSON.stringify(data,null,2)
 
 
 
-export async function analyzeLead(data={}) {
+export async function analyzeLead(data={}){
 
 
-return askOpenAI([
+return askAI([
 
 {
+
 role:"system",
 
 content:
+
 `
 Você é especialista em vendas B2B.
 
@@ -158,15 +197,20 @@ Avalie:
 - abordagem ideal.
 
 Entregue uma análise comercial.
+
 `
 
 },
 
 
 {
+
 role:"user",
+
 content:JSON.stringify(data,null,2)
+
 }
+
 
 ]);
 
@@ -180,15 +224,17 @@ content:JSON.stringify(data,null,2)
 
 
 
-export async function writeOutreach(data={}) {
+export async function writeOutreach(data={}){
 
 
-return askOpenAI([
+return askAI([
 
 {
+
 role:"system",
 
 content:
+
 `
 Você cria mensagens profissionais de prospecção.
 
@@ -199,18 +245,21 @@ Gere:
 - follow-up;
 - quebra de objeções.
 
-Tom humano, natural e persuasivo.
+Tom humano e natural.
 
-Nunca pareça spam.
 `
 
 },
 
 
 {
+
 role:"user",
+
 content:JSON.stringify(data,null,2)
+
 }
+
 
 ]);
 
@@ -224,15 +273,17 @@ content:JSON.stringify(data,null,2)
 
 
 
-export async function contentCalendar(data={}) {
+export async function contentCalendar(data={}){
 
 
-return askOpenAI([
+return askAI([
 
 {
+
 role:"system",
 
 content:
+
 `
 Você é especialista em marketing de conteúdo.
 
@@ -252,9 +303,13 @@ Inclua:
 
 
 {
+
 role:"user",
+
 content:JSON.stringify(data,null,2)
+
 }
+
 
 ]);
 
@@ -268,16 +323,21 @@ content:JSON.stringify(data,null,2)
 
 
 
-export async function researchQueries(data={}) {
+export async function researchQueries(data={}){
 
 
-const result =
-await askOpenAI([
+return {
+
+result:
+
+await askAI([
 
 {
+
 role:"system",
 
 content:
+
 `
 Você é especialista em pesquisa comercial.
 
@@ -288,24 +348,24 @@ Gere:
 - palavras-chave;
 - pesquisas;
 - filtros;
-- ideias de busca;
 - oportunidades.
 
 `
 
 },
 
-
 {
+
 role:"user",
+
 content:JSON.stringify(data,null,2)
+
 }
 
-]);
+
+])
 
 
-return {
-result
 };
 
 
@@ -317,38 +377,42 @@ result
 
 
 
-export async function companyResearch(data = {}) {
 
-  return askOpenAI([
+export async function companyResearch(data={}){
 
-    {
-      role:"system",
 
-      content:
+return askAI([
+
+{
+
+role:"system",
+
+content:
+
 `
 Você é especialista em pesquisa estratégica de empresas.
 
-Analise empresas considerando:
+Analise:
 
 - mercado;
 - posicionamento;
 - oportunidades;
-- necessidades;
-- possíveis abordagens comerciais.
+- necessidades.
 
-Entregue uma análise prática.
 `
-    },
 
-    {
-      role:"user",
+},
 
-      content:
-        JSON.stringify(data,null,2)
+{
 
-    }
+role:"user",
 
-  ]);
+content:JSON.stringify(data,null,2)
+
+}
+
+]);
+
 
 }
 
@@ -357,46 +421,61 @@ Entregue uma análise prática.
 
 
 
-export async function generateProposal(data = {}) {
 
-  return askOpenAI([
 
-    {
-      role:"system",
+export async function generateProposal(data={}){
 
-      content:
+
+return askAI([
+
+{
+
+role:"system",
+
+content:
+
 `
 Você cria propostas comerciais profissionais.
 
 Estruture:
 
 - apresentação;
-- problema identificado;
+- problema;
 - solução;
 - benefícios;
 - próximos passos.
 
-Use linguagem persuasiva e profissional.
 `
-    },
 
-    {
-      role:"user",
+},
 
-      content:
-        JSON.stringify(data,null,2)
+{
 
-    }
+role:"user",
 
-  ]);
+content:JSON.stringify(data,null,2)
 
 }
+
+]);
+
+
+}
+
+
+
+
+
+
+
 export const agentInfo = {
+
 
 name:"CalLivora AI",
 
 version:"1.0.0",
 
-poweredBy:"OpenAI"
+poweredBy:"Google Gemini"
+
 
 };

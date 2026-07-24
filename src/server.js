@@ -16,6 +16,30 @@ import {
   generateProposal,
   companyResearch
 } from "./agent.js";
+import {
+  routeAgent
+} from "./agents/agent-router.js";
+import {
+  marketingAgent
+} from "./agents/marketing-agent.js";
+
+
+import {
+  strategistAgent
+} from "./agents/strategist-agent.js";
+
+
+import {
+  mentorAgent
+} from "./agents/mentor-agent.js";
+import {
+  aprenderMemoriaAutomatica
+} from "./memory-manager.js";
+
+
+import {
+  salvarConversa
+} from "./services/conversas.js";
 
 
 import {
@@ -61,51 +85,57 @@ const mimeTypes = {
 ".jpeg":"image/jpeg"
 
 };
-function send(res, statusCode, body, headers = {}) {
-
-  let payload;
-
-  if (Buffer.isBuffer(body)) {
-
-    payload = body;
-
-  } else if (typeof body === "string") {
-
-    payload = body;
-
-  } else {
-
-    payload = JSON.stringify(body, null, 2);
-
-  }
 
 
-  res.writeHead(statusCode, {
 
-    "Content-Type":
-      headers["Content-Type"] ||
-      "application/json; charset=utf-8",
+function send(res,statusCode,body,headers={}){
 
-    "Access-Control-Allow-Origin":
-      "*",
-
-    "Access-Control-Allow-Methods":
-      "GET,POST,OPTIONS",
-
-    "Access-Control-Allow-Headers":
-      "Content-Type, Authorization",
-
-    ...headers
-
-  });
+let payload;
 
 
-  res.end(payload);
+if(Buffer.isBuffer(body)){
+
+payload = body;
+
+}else if(typeof body==="string"){
+
+payload = body;
+
+}else{
+
+payload = JSON.stringify(body,null,2);
 
 }
 
-async function readJson(req){
 
+res.writeHead(statusCode,{
+
+"Content-Type":
+headers["Content-Type"] ||
+"application/json; charset=utf-8",
+
+"Access-Control-Allow-Origin":"*",
+
+"Access-Control-Allow-Methods":
+"GET,POST,OPTIONS",
+
+"Access-Control-Allow-Headers":
+"Content-Type, Authorization",
+
+...headers
+
+});
+
+
+res.end(payload);
+
+}
+
+
+
+
+
+async function readJson(req){
 
 let body="";
 
@@ -117,13 +147,10 @@ body+=chunk;
 }
 
 
-
 if(!body.trim()) return {};
 
 
-
 return JSON.parse(body);
-
 
 }
 
@@ -133,10 +160,7 @@ return JSON.parse(body);
 
 
 
-
-
 async function serveStatic(req,res){
-
 
 
 let pathname =
@@ -162,13 +186,11 @@ pathname
 
 if(!existsSync(filePath)){
 
-
 send(
 res,
 404,
 "Arquivo não encontrado"
 );
-
 
 return;
 
@@ -193,8 +215,7 @@ res,
 content,
 {
 "Content-Type":
-mimeTypes[ext]
-||
+mimeTypes[ext] ||
 "application/octet-stream"
 }
 );
@@ -240,7 +261,6 @@ try{
 if(url.pathname==="/health"){
 
 
-
 send(
 res,
 200,
@@ -254,9 +274,7 @@ openai:
 Boolean(process.env.OPENAI_API_KEY),
 
 tools:
-tools.map(
-x=>x.name
-)
+tools.map(x=>x.name)
 
 }
 
@@ -265,8 +283,8 @@ x=>x.name
 
 return;
 
-
 }
+
 
 
 
@@ -285,20 +303,114 @@ req.method==="POST"
 const data =
 await readJson(req);
 
+let text;
 
 
-const text =
-await answerQuestion({
+if(data.agente === "marketing"){
 
-message:data.message || "",
 
-context:data.context || ""
+  text =
+  await marketingAgent({
+
+    message:data.message || "",
+
+    context:data.context || ""
+
+  });
+
+
+}
+
+
+else if(data.agente === "strategist"){
+
+
+  text =
+  await strategistAgent({
+
+    message:data.message || "",
+
+    context:data.context || ""
+
+  });
+
+
+}
+
+
+else if(data.agente === "mentor"){
+
+
+  text =
+  await mentorAgent({
+
+    message:data.message || "",
+
+    context:data.context || ""
+
+  });
+
+
+}
+
+
+else{
+
+
+  text =
+  await routeAgent({
+
+    message:data.message || "",
+
+    context:data.context || ""
+
+  });
+
+
+}
+
+if(data.cliente_id){
+
+await aprenderMemoriaAutomatica(
+
+data.cliente_id,
+
+data.message || "",
+
+text
+
+);
+
+}
+
+
+
+if(data.cliente_id){
+
+
+await salvarConversa({
+
+cliente_id:data.cliente_id,
+
+pergunta:data.message || "",
+
+resposta:text
 
 });
 
 
+}
 
-send(res,200,{text});
+
+
+send(
+res,
+200,
+{
+text
+}
+);
+
 
 return;
 
@@ -327,12 +439,10 @@ const text =
 await makeProspectingPlan(data);
 
 
-
 send(res,200,{text});
 
 
 return;
-
 
 }
 
@@ -366,7 +476,6 @@ send(res,200,result);
 
 return;
 
-
 }
 
 
@@ -396,7 +505,6 @@ send(res,200,{text});
 
 
 return;
-
 
 }
 
@@ -428,7 +536,6 @@ send(res,200,{text});
 
 return;
 
-
 }
 
 
@@ -459,7 +566,6 @@ send(res,200,{text});
 
 
 return;
-
 
 }
 
@@ -493,7 +599,6 @@ send(res,200,{text});
 
 return;
 
-
 }
 
 
@@ -519,15 +624,13 @@ res,
 name:"CalLivora MCP",
 
 tools:
-tools.map(
-t=>({
+tools.map(t=>({
 
 name:t.name,
 
 description:t.description
 
-})
-)
+}))
 
 }
 
