@@ -1711,3 +1711,174 @@ body{
 
 
 }
+
+/* =================================
+   CAL LIVORA MOBILE FINAL UI
+================================= */
+
+@media(max-width:760px){
+
+/* páginas internas */
+
+.internal-page,
+body:has(.global-sidebar){
+
+    padding-left:0 !important;
+
+}
+
+
+/* conteúdo */
+
+.main-content{
+
+    padding:18px !important;
+
+}
+
+
+/* títulos */
+
+h1{
+
+    font-size:32px !important;
+    line-height:1.15;
+
+}
+
+
+h2{
+
+    font-size:24px !important;
+
+}
+
+
+/* todos os cards */
+
+.card,
+.feature-card,
+.chat-panel,
+.response,
+.resources-section,
+.hero,
+.cards > *{
+
+    width:100% !important;
+
+    border-radius:20px !important;
+
+}
+
+
+/* grids */
+
+.cards,
+.resources-section .cards{
+
+    display:flex !important;
+
+    flex-direction:column !important;
+
+    gap:15px !important;
+
+}
+
+
+
+/* formulários */
+
+form{
+
+    width:100%;
+
+}
+
+
+input,
+textarea,
+select{
+
+    width:100% !important;
+
+    font-size:16px !important;
+
+}
+
+
+
+/* botões */
+
+button,
+.send-button{
+
+    width:100%;
+
+    min-height:50px;
+
+}
+
+
+
+/* redes sociais */
+
+.platform-grid,
+.strategy-grid,
+.social-grid{
+
+    display:flex !important;
+
+    flex-direction:column !important;
+
+}
+
+
+
+/* tabelas */
+
+table{
+
+    display:block;
+
+    overflow-x:auto;
+
+}
+
+
+
+/* textos longos */
+
+p{
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+
+
+/* chat */
+
+#agentChat,
+.agent-history,
+.messages{
+
+    max-height:none !important;
+
+    height:auto;
+
+}
+
+
+
+/* evita estouro lateral */
+
+*{
+
+    max-width:100%;
+
+}
+
+
+}
