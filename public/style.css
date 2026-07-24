@@ -2231,3 +2231,60 @@ textarea {
   }
 
 }
+/* ======================================
+   CORREÇÃO SCROLL MOBILE CAL LIVORA
+====================================== */
+
+@media(max-width:760px){
+
+html,
+body,
+#root {
+    height:auto !important;
+    min-height:100% !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+}
+
+
+body {
+    position:static !important;
+}
+
+
+.app-shell,
+.main-content,
+.internal-page {
+    height:auto !important;
+    min-height:100vh !important;
+    overflow:visible !important;
+}
+
+
+.sidebar,
+.global-sidebar {
+    position:relative !important;
+}
+
+
+.chat-panel,
+.messages,
+.agent-history,
+#agentChat {
+
+    max-height:none !important;
+    overflow:visible !important;
+
+}
+
+
+button,
+a,
+.nav-item,
+.global-menu a {
+
+    position:relative;
+    z-index:9999;
+}
+
+}
