@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CalLivora - Monetização Espiritual</title>
+
+<link rel="stylesheet" href="/style.css">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0b1020;
+    color:white;
+}
+
+.container{
+    padding:40px;
+}
+
+h1{
+    font-size:36px;
+}
+
+.card{
+    background:#151c35;
+    padding:25px;
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:20px;
+}
+
+.box{
+    background:#20294a;
+    padding:22px;
+    border-radius:15px;
+}
+
+label{
+    display:block;
+    margin-top:18px;
+    font-weight:600;
+}
+
+select,
+input,
+textarea{
+    width:100%;
+    box-sizing:border-box;
+    padding:14px;
+    margin-top:10px;
+    border-radius:10px;
+    border:none;
+    background:#20294a;
+    color:white;
+}
+
+textarea{
+    resize:vertical;
+}
+
+button{
+    margin-top:20px;
+    padding:15px 30px;
+    background:#6d5dfc;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:disabled{
+    opacity:.6;
+    cursor:wait;
+}
+
+.result{
+    background:#10162c;
+    padding:25px;
+    border-radius:18px;
+    margin-top:25px;
+    line-height:1.7;
+}
+
+#moneyAIResult h2{
+    margin-top:28px;
+    color:white;
+}
+
+#moneyAIResult h3{
+    margin-top:24px;
+    color:#b879ff;
+}
+
+#moneyAIResult h4{
+    margin-top:20px;
+    color:white;
+}
+
+#moneyAIResult strong{
+    color:white;
+}
+
+#moneyAIResult hr{
+    border:none;
+    border-top:1px solid rgba(255,255,255,.08);
+    margin:25px 0;
+}
+
+.ai-list-item{
+    margin:6px 0;
+}
+
+</style>
+
+</head>
+
+<body class="internal-page">
+
+<div class="container">
+
+<h1>💰 Monetização Espiritual</h1>
+
+<p>
+Transforme conhecimento, audiência e autoridade no universo espiritual em produtos, serviços e recorrência.
+</p>
+
+
+<div class="card">
+
+<h2>🔮 Criar estratégia de monetização</h2>
+
+
+<label for="moneyNiche">
+Área espiritual
+</label>
+
+<select id="moneyNiche">
+    <option>Tarot</option>
+    <option>Bruxaria</option>
+    <option>Cristais e pedras</option>
+    <option>Espiritualidade</option>
+    <option>Astrologia</option>
+    <option>Numerologia</option>
+    <option>Oráculos</option>
+    <option>Simbologia</option>
+    <option>Ervas e práticas tradicionais</option>
+    <option>Autoconhecimento espiritual</option>
+</select>
+
+
+<label for="moneyAudience">
+Tamanho da audiência
+</label>
+
+<select id="moneyAudience">
+    <option>Até 1 mil seguidores</option>
+    <option>1 mil - 10 mil</option>
+    <option>10 mil - 100 mil</option>
+    <option>100 mil+</option>
+</select>
+
+
+<label for="moneyGoal">
+Principal objetivo
+</label>
+
+<select id="moneyGoal">
+    <option>Vender consultas</option>
+    <option>Vender leituras de tarot</option>
+    <option>Vender cristais ou pedras</option>
+    <option>Criar ebook</option>
+    <option>Criar curso</option>
+    <option>Criar comunidade espiritual</option>
+    <option>Criar assinatura mensal</option>
+    <option>Criar clube de membros</option>
+    <option>Vender produtos físicos</option>
+</select>
+
+
+<label for="moneyOffer">
+O que você vende ou pretende vender?
+</label>
+
+<textarea
+id="moneyOffer"
+rows="4"
+placeholder="Ex: leitura de tarot, mapa astral, cristais, velas, ebook, curso, comunidade..."
+></textarea>
+
+
+<label for="moneyPositioning">
+Como você quer se posicionar?
+</label>
+
+<select id="moneyPositioning">
+    <option>Especialista e educador</option>
+    <option>Tarólogo / oraculista</option>
+    <option>Bruxa moderna</option>
+    <option>Guia de espiritualidade</option>
+    <option>Especialista em cristais e pedras</option>
+    <option>Criador de conteúdo espiritual</option>
+    <option>Marca de produtos espirituais</option>
+</select>
+
+
+<button id="generateMoneyButton" type="button">
+🚀 Criar plano de monetização
+</button>
+
+</div>
+
+
+<div class="grid">
+
+<div class="box">
+<h2>🔮 Produtos</h2>
+<p>
+Consultas<br>
+Tarot<br>
+Cristais<br>
+Ebooks<br>
+Cursos<br>
+Comunidade
+</p>
+</div>
+
+<div class="box">
+<h2>🔥 Funil</h2>
+<p>
+Conteúdo<br>
+Confiança<br>
+Relacionamento<br>
+Oferta<br>
+Venda
+</p>
+</div>
+
+<div class="box">
+<h2>📈 Escala</h2>
+<p>
+Recorrência<br>
+Comunidade<br>
+Parcerias<br>
+Automação<br>
+Anúncios
+</p>
+</div>
+
+</div>
+
+
+<div class="result">
+
+<h2>Plano de monetização da IA</h2>
+
+<div id="moneyAIResult">
+Preencha os campos acima e clique em <strong>Criar plano de monetização</strong>.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function formatMoneyResponse(text){
+
+    let html = String(text || "");
+
+    html = html
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    html = html.replace(/^---$/gm, "<hr>");
+
+    html = html.replace(/^### (.+)$/gm, "<h4>$1</h4>");
+    html = html.replace(/^## (.+)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^# (.+)$/gm, "<h2>$1</h2>");
+
+    html = html.replace(
+        /\*\*(.+?)\*\*/g,
+        "<strong>$1</strong>"
+    );
+
+    html = html.replace(
+        /^- (.+)$/gm,
+        '<div class="ai-list-item">• $1</div>'
+    );
+
+    html = html.replace(/\n/g, "<br>");
+
+    return html;
+}
+
+
+const generateMoneyButton =
+    document.getElementById("generateMoneyButton");
+
+
+generateMoneyButton.addEventListener("click", async () => {
+
+    const niche =
+        document.getElementById("moneyNiche").value;
+
+    const audience =
+        document.getElementById("moneyAudience").value;
+
+    const goal =
+        document.getElementById("moneyGoal").value;
+
+    const offer =
+        document.getElementById("moneyOffer").value.trim();
+
+    const positioning =
+        document.getElementById("moneyPositioning").value;
+
+    const result =
+        document.getElementById("moneyAIResult");
+
+
+    generateMoneyButton.disabled = true;
+
+    generateMoneyButton.textContent =
+        "⏳ Criando estratégia...";
+
+    result.innerHTML =
+        "🧠 CalLivora está construindo sua estratégia espiritual de monetização...";
+
+
+    try {
+
+        const prompt = `
+Você está no módulo Monetização Espiritual do CalLivora.
+
+O usuário trabalha no universo de espiritualidade e precisa de uma estratégia de negócio ética, prática e sustentável.
+
+INFORMAÇÕES:
+
+ÁREA:
+${niche}
+
+TAMANHO DA AUDIÊNCIA:
+${audience}
+
+OBJETIVO:
+${goal}
+
+OFERTA OU PRODUTO:
+${offer || "Ainda não definido"}
+
+POSICIONAMENTO:
+${positioning}
+
+Crie uma estratégia completa.
+
+## 🔎 DIAGNÓSTICO
+Analise o estágio atual e as oportunidades mais adequadas para esse perfil.
+
+## 🎯 POSICIONAMENTO
+Defina como essa pessoa ou marca deve se posicionar no mercado espiritual.
+
+## 💎 PRODUTO DE ENTRADA
+Sugira uma oferta simples e acessível para novos clientes.
+
+## 🔮 PRODUTO PRINCIPAL
+Sugira o principal produto ou serviço.
+
+## 🌙 RECORRÊNCIA
+Sugira formas de criar receita recorrente, como comunidade, assinatura, clube ou acompanhamento.
+
+## 🪨 PRODUTOS FÍSICOS
+Quando fizer sentido, sugira cristais, pedras, velas, kits, baralhos, acessórios ou outros produtos relacionados ao nicho.
+
+## 📚 PRODUTOS DIGITAIS
+Sugira ebooks, cursos, aulas, guias, workshops ou conteúdos exclusivos.
+
+## 🔥 FUNIL DE CONVERSÃO
+Monte:
+conteúdo → confiança → relacionamento → oferta → venda → recorrência.
+
+## 📱 CONTEÚDO PARA VENDER
+Crie ideias de conteúdo para:
+- atrair;
+- educar;
+- gerar autoridade;
+- criar identificação;
+- apresentar ofertas.
+
+## 🧲 CAPTAÇÃO
+Explique como gerar interessados através de redes sociais, direct, WhatsApp, comunidade ou lista.
+
+## 💬 CTA
+Crie CTAs naturais e adequados ao universo espiritual.
+
+## 💰 ESTRATÉGIA DE OFERTA
+Explique como apresentar a oferta sem parecer agressivo ou apelativo.
+
+## 📈 ESCALA
+Mostre como crescer com:
+- conteúdo;
+- comunidade;
+- parcerias;
+- automação;
+- mídia paga, quando fizer sentido.
+
+## 📅 PLANO DE 30 DIAS
+Monte uma estratégia semanal para os próximos 30 dias.
+
+## ✅ PRÓXIMOS PASSOS
+Liste as ações prioritárias.
+
+IMPORTANTE:
+Diferencie interpretações espirituais, simbólicas ou tradicionais de afirmações científicas.
+Não faça promessas garantidas de cura, futuro, dinheiro ou resultados.
+Evite manipulação emocional ou medo.
+Seja estratégico, criativo e específico para ${niche}.
+`;
+
+
+        const response = await fetch("/api/chat", {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                message:prompt,
+                context:"[]"
+            })
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (!response.ok){
+
+            throw new Error(
+                data.error || "Erro ao criar plano."
+            );
+
+        }
+
+
+        const answer =
+            String(data.text || "").trim();
+
+
+        if (!answer){
+
+            throw new Error(
+                "A IA não retornou uma estratégia."
+            );
+
+        }
+
+
+        result.innerHTML =
+            formatMoneyResponse(answer);
+
+
+    } catch(error){
+
+        console.error(error);
+
+        result.innerHTML =
+            "<strong>❌ Não foi possível criar o plano:</strong> " +
+            error.message;
+
+    } finally {
+
+        generateMoneyButton.disabled = false;
+
+        generateMoneyButton.textContent =
+            "🚀 Criar plano de monetização";
+
+    }
+
+});
+
+</script>
+
+
+<script src="/js/sidebar.js"></script>
+
+</body>
+</html>

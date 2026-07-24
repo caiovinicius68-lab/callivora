@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<link rel="stylesheet" href="/style.css">
+<meta charset="UTF-8">
+
+<title>CalLivora - Tendências</title>
+
+<style>
+
+#trendAIResult {
+    margin-top: 22px;
+    padding: 28px;
+    background: #0d1429;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 18px;
+    color: #e9e7ef;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+#trendAIResult h2 {
+    margin: 30px 0 14px;
+    color: #ffffff;
+    font-size: 26px;
+}
+
+#trendAIResult h3 {
+    margin: 28px 0 12px;
+    color: #b879ff;
+    font-size: 22px;
+}
+
+#trendAIResult h4 {
+    margin: 22px 0 10px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+#trendAIResult strong {
+    color: #ffffff;
+}
+
+#trendAIResult hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.08);
+    margin: 28px 0;
+}
+
+.ai-list-item {
+    margin: 6px 0;
+    padding-left: 6px;
+}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0b1020;
+color:white;
+}
+
+.container{
+padding:40px;
+}
+
+
+.header h1{
+font-size:36px;
+}
+
+
+.card{
+
+background:#151c35;
+border-radius:20px;
+padding:25px;
+margin:20px 0;
+
+}
+
+
+.tag{
+
+display:inline-block;
+background:#6d5dfc;
+padding:8px 15px;
+border-radius:20px;
+margin:5px;
+
+}
+
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+
+}
+
+
+.box{
+
+background:#20294a;
+padding:25px;
+border-radius:18px;
+
+}
+
+.trend-option {
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.trend-option:hover {
+    transform: translateY(-2px);
+}
+
+.trend-option.selected {
+    background: white;
+    color: #6d5dfc;
+    box-shadow: 0 0 0 3px rgba(109,93,252,.25);
+}
+.ai-output-card {
+    margin-top: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 92, 246, .28);
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 22, 42, .98),
+            rgba(10, 13, 28, .98)
+        );
+}
+
+.ai-output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 18px 22px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
+
+    background:
+        rgba(139, 92, 246, .08);
+
+    font-weight: 700;
+}
+
+.copy-ai-button {
+    border: 1px solid rgba(184,121,255,.3);
+    border-radius: 10px;
+
+    padding: 9px 14px;
+
+    background: rgba(139,61,255,.13);
+    color: white;
+
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.copy-ai-button:hover {
+    background: rgba(139,61,255,.25);
+    transform: translateY(-1px);
+}
+
+.ai-output-content {
+    padding: 28px;
+    line-height: 1.75;
+}
+
+.ai-output-content h2 {
+    margin: 32px 0 14px;
+    font-size: 27px;
+    color: white;
+}
+
+.ai-output-content h3 {
+    margin: 30px 0 12px;
+    font-size: 21px;
+    color: #b879ff;
+}
+
+.ai-output-content h4 {
+    margin: 22px 0 9px;
+    color: #ffffff;
+}
+
+.ai-output-content strong {
+    color: white;
+}
+
+.ai-output-content hr {
+    margin: 30px 0;
+
+    border: 0;
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+.ai-list-item {
+    margin: 7px 0;
+}
+</style>
+
+</head>
+
+
+<body class="internal-page">
+
+
+<div class="container">
+
+
+<div class="header">
+
+<h1>
+📈 Radar de Tendências
+</h1>
+
+<p>
+Descubra formatos que estão crescendo e transforme em conteúdo.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+🔥 Formatos em alta
+</h2>
+
+
+<span class="tag trend-option" data-trend="Escolha uma carta">
+Escolha uma carta
+</span>
+
+<span class="tag trend-option" data-trend="Mensagem personalizada">
+Mensagem personalizada
+</span>
+
+<span class="tag trend-option" data-trend="Storytelling emocional">
+Storytelling emocional
+</span>
+
+<span class="tag trend-option" data-trend="Antes e depois">
+Antes e depois
+</span>
+
+</div>
+
+
+
+
+<div class="grid">
+
+
+<div class="box">
+
+<h2>
+🎵 TikTok Radar
+</h2>
+
+<p>
+
+Vídeos crescendo:
+<br><br>
+
+• Conteúdo interativo
+<br>
+• Séries diárias
+<br>
+• Ganchos emocionais
+<br>
+• Comentários como participação
+
+</p>
+
+</div>
+
+
+
+
+<div class="box">
+
+<h2>
+🧠 Por que viraliza?
+</h2>
+
+<p>
+
+✓ Curiosidade
+
+<br>
+✓ Identificação
+
+<br>
+✓ Retenção
+
+<br>
+✓ Participação do público
+
+</p>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+<div class="card">
+
+
+<h2>
+🚀 Gerar oportunidade
+</h2>
+
+
+<p>
+
+Transforme uma tendência em:
+
+</p>
+
+
+<ul>
+
+<li>Roteiro viral</li>
+
+<li>Legenda</li>
+
+<li>CTA</li>
+
+<li>Ideia de vídeo</li>
+
+<li>Prompt para IA</li>
+
+</ul>
+
+<button id="generateTrendButton">
+🚀 Gerar com IA
+</button>
+
+<div id="trendResult" style="display:none; margin-top:25px;">
+
+<h3>✨ Oportunidade criada</h3>
+
+<p><strong>Formato selecionado:</strong> <span id="selectedTrendText"></span></p>
+
+<div id="trendAIResult">
+Aguardando geração...
+</div>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+</body>
+<div style="
+position:sticky;
+top:0;
+z-index:9999;
+display:flex;
+align-items:center;
+gap:10px;
+padding:14px 20px;
+background:#0d0d12;
+border-bottom:1px solid rgba(169,98,255,.27);
+">
+
+<a href="/" style="
+text-decoration:none;
+color:white;
+background:#1a1326;
+padding:10px 16px;
+border-radius:10px;
+font-weight:600;
+">
+← Voltar
+</a>
+
+<a href="/#assistente" style="
+text-decoration:none;
+color:white;
+background:#7c3aed;
+padding:10px 16px;
+border-radius:10px;
+font-weight:600;
+">
+🔮 Conversar com a IA
+</a>
+<script>
+
+let selectedTrend = null;
+
+
+// ========================================
+// FORMATAR RESPOSTA DA IA
+// ========================================
+
+function formatAIResponse(text) {
+
+    let html = String(text || "");
+
+    html = html
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    html = html.replace(/^---$/gm, "<hr>");
+
+    html = html.replace(/^### (.+)$/gm, "<h4>$1</h4>");
+    html = html.replace(/^## (.+)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^# (.+)$/gm, "<h2>$1</h2>");
+
+    html = html.replace(
+        /\*\*(.+?)\*\*/g,
+        "<strong>$1</strong>"
+    );
+
+    html = html.replace(
+        /^- (.+)$/gm,
+        '<div class="ai-list-item">• $1</div>'
+    );
+
+    html = html.replace(/\n/g, "<br>");
+
+    return html;
+}
+
+
+// ========================================
+// SELECIONAR FORMATO
+// ========================================
+
+const trendOptions =
+    document.querySelectorAll(".trend-option");
+
+
+trendOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        trendOptions.forEach(item => {
+            item.classList.remove("selected");
+        });
+
+        option.classList.add("selected");
+
+        selectedTrend =
+            option.dataset.trend;
+
+        console.log(
+            "Formato selecionado:",
+            selectedTrend
+        );
+
+    });
+
+});
+
+
+// ========================================
+// BOTÃO GERAR COM IA
+// ========================================
+
+const generateTrendButton =
+    document.getElementById("generateTrendButton");
+
+
+if (generateTrendButton) {
+
+    generateTrendButton.addEventListener(
+        "click",
+        async () => {
+
+            if (!selectedTrend) {
+
+                alert(
+                    "Escolha primeiro um formato em alta."
+                );
+
+                return;
+            }
+
+
+            const resultBox =
+                document.getElementById("trendResult");
+
+            const selectedText =
+                document.getElementById("selectedTrendText");
+
+            const aiResult =
+                document.getElementById("trendAIResult");
+
+
+            resultBox.style.display = "block";
+
+            selectedText.textContent =
+                selectedTrend;
+
+            aiResult.innerHTML =
+                "🧠 CalLivora está analisando a tendência...";
+
+
+            generateTrendButton.disabled = true;
+
+            generateTrendButton.textContent =
+                "⏳ Gerando...";
+
+
+            try {
+
+                const prompt = `
+Você está no módulo Radar de Tendências do CalLivora.
+
+O usuário selecionou o formato:
+
+"${selectedTrend}"
+
+Analise esse formato como estrategista de marketing, crescimento e conteúdo.
+
+Entregue:
+
+## 🔎 ANÁLISE
+Explique por que esse formato prende atenção.
+
+## 🧠 ESTRATÉGIA
+Explique como transformar esse formato em estratégia de conteúdo.
+
+## 🚀 EXECUÇÃO
+
+### 1. TÍTULO
+Crie um título forte.
+
+### 2. GANCHO
+Crie um gancho para os primeiros segundos.
+
+### 3. IDEIA DE VÍDEO
+Explique o conceito.
+
+### 4. ROTEIRO VIRAL
+Crie o roteiro completo.
+
+### 5. LEGENDA
+Crie uma legenda pronta.
+
+### 6. CTA
+Crie uma chamada para ação.
+
+### 7. PROMPT PARA IA
+Crie um prompt que possa ser usado para produzir esse conteúdo.
+
+Evite respostas genéricas.
+Seja prático e estratégico.
+`;
+
+
+                const response =
+                    await fetch("/api/chat", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            message: prompt,
+
+                            context: "[]"
+
+                        })
+
+                    });
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.error ||
+                        "Erro ao gerar oportunidade."
+                    );
+
+                }
+
+
+                const answer =
+                    String(
+                        data.text || ""
+                    ).trim();
+
+
+                if (!answer) {
+
+                    throw new Error(
+                        "A IA não retornou conteúdo."
+                    );
+
+                }
+
+
+                aiResult.innerHTML =
+                    formatAIResponse(answer);
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                aiResult.innerHTML =
+                    `<strong>❌ Erro:</strong> ${error.message}`;
+
+            } finally {
+
+                generateTrendButton.disabled =
+                    false;
+
+                generateTrendButton.textContent =
+                    "🚀 Gerar com IA";
+
+            }
+
+        }
+    );
+
+} else {
+
+    console.error(
+        "Botão generateTrendButton não encontrado."
+    );
+
+}
+
+</script>
+
+<script src="/js/sidebar.js"></script>
+</body>
+</html>

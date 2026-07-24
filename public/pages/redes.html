@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CalLivora - Redes Sociais</title>
+
+<link rel="stylesheet" href="/style.css">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0b1020;
+    color:white;
+}
+
+.container{
+    padding:40px;
+}
+
+h1{
+    font-size:36px;
+}
+
+.card{
+    background:#151c35;
+    padding:25px;
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:20px;
+}
+
+.box{
+    background:#20294a;
+    padding:20px;
+    border-radius:15px;
+}
+
+label{
+    display:block;
+    margin-top:18px;
+    font-weight:600;
+}
+
+select,
+input{
+    width:100%;
+    box-sizing:border-box;
+    padding:14px;
+    margin-top:10px;
+    border-radius:10px;
+    border:none;
+    background:#20294a;
+    color:white;
+}
+
+button{
+    margin-top:20px;
+    padding:15px 30px;
+    background:#6d5dfc;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:disabled{
+    opacity:.6;
+    cursor:wait;
+}
+
+.result{
+    background:#10162c;
+    padding:25px;
+    border-radius:18px;
+    margin-top:25px;
+    line-height:1.7;
+}
+
+#socialAIResult h2{
+    margin-top:28px;
+    color:white;
+}
+
+#socialAIResult h3{
+    margin-top:24px;
+    color:#b879ff;
+}
+
+#socialAIResult h4{
+    margin-top:20px;
+    color:white;
+}
+
+#socialAIResult strong{
+    color:white;
+}
+
+#socialAIResult hr{
+    border:none;
+    border-top:1px solid rgba(255,255,255,.08);
+    margin:25px 0;
+}
+
+.ai-list-item{
+    margin:6px 0;
+}
+
+</style>
+
+</head>
+
+<body class="internal-page">
+
+<div class="container">
+
+<h1>📱 Redes Sociais</h1>
+
+<p>Planeje crescimento e conteúdo.</p>
+
+
+<div class="card">
+
+<h2>Criar estratégia</h2>
+
+<label for="socialPlatform">
+Plataforma
+</label>
+
+<select id="socialPlatform">
+    <option>Instagram</option>
+    <option>TikTok</option>
+    <option>YouTube</option>
+</select>
+
+
+<label for="socialGoal">
+Objetivo
+</label>
+
+<select id="socialGoal">
+    <option>Crescer seguidores</option>
+    <option>Vender</option>
+    <option>Construir autoridade</option>
+</select>
+
+
+<label for="socialNiche">
+Nicho
+</label>
+
+<input
+    id="socialNiche"
+    type="text"
+    placeholder="Ex: Tarot, espiritualidade, negócios"
+>
+
+
+<button id="generateSocialButton" type="button">
+🚀 Criar plano
+</button>
+
+</div>
+
+
+<div class="grid">
+
+<div class="box">
+<h2>🔥 Conteúdo</h2>
+<p>
+Ideias de posts<br>
+Reels<br>
+Stories<br>
+Séries
+</p>
+</div>
+
+<div class="box">
+<h2>📅 Calendário</h2>
+<p>
+7 dias<br>
+30 dias<br>
+Campanhas
+</p>
+</div>
+
+<div class="box">
+<h2>📊 Análise</h2>
+<p>
+Crescimento<br>
+Engajamento<br>
+Conversão
+</p>
+</div>
+
+</div>
+
+
+<div class="result">
+
+<h2>Plano estratégico da IA</h2>
+
+<div id="socialAIResult">
+Preencha os campos acima e clique em <strong>Criar plano</strong>.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function formatSocialResponse(text){
+
+    let html = String(text || "");
+
+    html = html
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    html = html.replace(/^---$/gm, "<hr>");
+
+    html = html.replace(/^### (.+)$/gm, "<h4>$1</h4>");
+    html = html.replace(/^## (.+)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^# (.+)$/gm, "<h2>$1</h2>");
+
+    html = html.replace(
+        /\*\*(.+?)\*\*/g,
+        "<strong>$1</strong>"
+    );
+
+    html = html.replace(
+        /^- (.+)$/gm,
+        '<div class="ai-list-item">• $1</div>'
+    );
+
+    html = html.replace(/\n/g, "<br>");
+
+    return html;
+}
+
+
+const generateSocialButton =
+    document.getElementById("generateSocialButton");
+
+
+generateSocialButton.addEventListener("click", async () => {
+
+    const platform =
+        document.getElementById("socialPlatform").value;
+
+    const goal =
+        document.getElementById("socialGoal").value;
+
+    const niche =
+        document.getElementById("socialNiche").value.trim();
+
+    const result =
+        document.getElementById("socialAIResult");
+
+
+    if (!niche) {
+        alert("Digite o nicho.");
+        return;
+    }
+
+
+    generateSocialButton.disabled = true;
+    generateSocialButton.textContent = "⏳ Criando plano...";
+
+    result.innerHTML =
+        "🧠 CalLivora está criando sua estratégia de redes sociais...";
+
+
+    try {
+
+        const prompt = `
+Você está no módulo Redes Sociais do CalLivora.
+
+Crie uma estratégia completa usando estas informações:
+
+PLATAFORMA:
+${platform}
+
+OBJETIVO:
+${goal}
+
+NICHO:
+${niche}
+
+Entregue:
+
+## 🎯 ESTRATÉGIA PRINCIPAL
+Defina a direção estratégica da conta.
+
+## 🧱 PILARES DE CONTEÚDO
+Crie de 3 a 5 pilares.
+
+## 🔥 IDEIAS DE CONTEÚDO
+Crie ideias específicas de posts e vídeos.
+
+## 🎬 FORMATOS
+Recomende formatos adequados para ${platform}.
+
+## 📖 STORIES
+Crie ideias de stories para relacionamento e conversão.
+
+## 📅 PLANO DE 7 DIAS
+Monte um calendário simples de conteúdo por 7 dias.
+
+## 📆 VISÃO DE 30 DIAS
+Explique como organizar o mês em blocos e campanhas.
+
+## 📈 CRESCIMENTO
+Explique como aumentar alcance, retenção e seguidores.
+
+## 💬 ENGAJAMENTO
+Crie estratégias para comentários, compartilhamentos e comunidade.
+
+## 💰 CONVERSÃO
+Explique como transformar audiência em resultado alinhado ao objetivo "${goal}".
+
+## ✅ PRÓXIMOS PASSOS
+Defina as próximas ações práticas.
+
+Seja específico para o nicho "${niche}".
+Evite respostas genéricas.
+`;
+
+        const response = await fetch("/api/chat", {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                message:prompt,
+                context:"[]"
+            })
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+            throw new Error(
+                data.error || "Erro ao criar estratégia."
+            );
+        }
+
+
+        const answer =
+            String(data.text || "").trim();
+
+
+        if (!answer) {
+            throw new Error(
+                "A IA não retornou um plano."
+            );
+        }
+
+
+        result.innerHTML =
+            formatSocialResponse(answer);
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        result.innerHTML =
+            "<strong>❌ Não foi possível criar o plano:</strong> " +
+            error.message;
+
+    } finally {
+
+        generateSocialButton.disabled = false;
+
+        generateSocialButton.textContent =
+            "🚀 Criar plano";
+
+    }
+
+});
+
+</script>
+
+
+<script src="/js/sidebar.js"></script>
+
+</body>
+</html>

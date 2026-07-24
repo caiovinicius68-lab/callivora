@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CalLivora - Criador</title>
+
+<link rel="stylesheet" href="/style.css">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1020;
+    color: white;
+}
+
+.container {
+    padding: 40px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.card {
+    background: #151c35;
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #20294a;
+    color: white;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    background: #6d5dfc;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: wait;
+}
+
+.result {
+    background: #10162c;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+#creatorAIResult {
+    margin-top: 20px;
+    line-height: 1.7;
+}
+
+#creatorAIResult h2 {
+    margin-top: 28px;
+    color: white;
+}
+
+#creatorAIResult h3 {
+    margin-top: 24px;
+    color: #b879ff;
+}
+
+#creatorAIResult h4 {
+    margin-top: 20px;
+    color: white;
+}
+
+#creatorAIResult strong {
+    color: white;
+}
+
+#creatorAIResult hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.08);
+    margin: 25px 0;
+}
+
+.ai-list-item {
+    margin: 6px 0;
+}
+
+</style>
+
+</head>
+
+<body class="internal-page">
+
+<div class="container">
+
+<h1>🎬 Creator Studio</h1>
+
+<p>
+Transforme tendências em conteúdos que crescem.
+</p>
+
+<div class="card">
+
+<h2>Criar novo conteúdo</h2>
+
+<label for="creatorPlatform">
+Plataforma
+</label>
+
+<select id="creatorPlatform">
+    <option>TikTok</option>
+    <option>Instagram Reels</option>
+    <option>YouTube Shorts</option>
+</select>
+
+
+<label for="creatorNiche">
+Nicho
+</label>
+
+<input
+    id="creatorNiche"
+    type="text"
+    placeholder="Ex: Tarot, espiritualidade, negócios..."
+>
+
+
+<label for="creatorGoal">
+Objetivo
+</label>
+
+<select id="creatorGoal">
+    <option>Crescer seguidores</option>
+    <option>Vender produto</option>
+    <option>Gerar autoridade</option>
+    <option>Criar comunidade</option>
+</select>
+
+
+<label for="creatorTopic">
+Tema do vídeo
+</label>
+
+<textarea
+    id="creatorTopic"
+    rows="4"
+    placeholder="Ex: Uma mensagem de tarot sobre amor"
+></textarea>
+
+
+<button id="generateCreatorButton" type="button">
+🚀 Gerar roteiro
+</button>
+
+</div>
+
+
+<div class="result">
+
+<h2>Resultado da IA</h2>
+
+<div id="creatorAIResult">
+    🎯 Preencha os campos acima e clique em <strong>Gerar roteiro</strong>.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function formatCreatorResponse(text) {
+
+    let html = String(text || "");
+
+    html = html
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    html = html.replace(/^---$/gm, "<hr>");
+
+    html = html.replace(/^### (.+)$/gm, "<h4>$1</h4>");
+    html = html.replace(/^## (.+)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^# (.+)$/gm, "<h2>$1</h2>");
+
+    html = html.replace(
+        /\*\*(.+?)\*\*/g,
+        "<strong>$1</strong>"
+    );
+
+    html = html.replace(
+        /^- (.+)$/gm,
+        '<div class="ai-list-item">• $1</div>'
+    );
+
+    html = html.replace(/\n/g, "<br>");
+
+    return html;
+}
+
+
+const generateCreatorButton =
+    document.getElementById("generateCreatorButton");
+
+
+generateCreatorButton.addEventListener("click", async () => {
+
+    const platform =
+        document.getElementById("creatorPlatform").value;
+
+    const niche =
+        document.getElementById("creatorNiche").value.trim();
+
+    const goal =
+        document.getElementById("creatorGoal").value;
+
+    const topic =
+        document.getElementById("creatorTopic").value.trim();
+
+    const result =
+        document.getElementById("creatorAIResult");
+
+
+    if (!niche) {
+        alert("Digite o nicho.");
+        return;
+    }
+
+    if (!topic) {
+        alert("Digite o tema do vídeo.");
+        return;
+    }
+
+
+    generateCreatorButton.disabled = true;
+    generateCreatorButton.textContent = "⏳ Criando roteiro...";
+
+    result.innerHTML =
+        "🧠 CalLivora está desenvolvendo seu conteúdo...";
+
+
+    try {
+
+        const prompt = `
+Você está no Creator Studio do CalLivora.
+
+Crie um conteúdo estratégico usando estas informações:
+
+PLATAFORMA:
+${platform}
+
+NICHO:
+${niche}
+
+OBJETIVO:
+${goal}
+
+TEMA:
+${topic}
+
+Entregue:
+
+## 🎯 TÍTULO
+Crie um título forte.
+
+## 🔥 GANCHO
+Crie um gancho forte para os primeiros segundos.
+
+## 🎬 ROTEIRO
+Crie o roteiro completo adaptado para ${platform}.
+
+## 🎥 CENAS
+Divida o conteúdo em cenas ou blocos quando fizer sentido.
+
+## 📝 LEGENDA
+Crie uma legenda pronta para publicação.
+
+## 📢 CTA
+Crie uma chamada para ação alinhada ao objetivo: ${goal}.
+
+## 💡 DIREÇÃO CRIATIVA
+Explique rapidamente como gravar ou produzir o conteúdo.
+
+Seja específico para o nicho "${niche}".
+Evite respostas genéricas.
+`;
+
+
+        const response = await fetch("/api/chat", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                message: prompt,
+                context: "[]"
+            })
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error || "Erro ao gerar roteiro."
+            );
+
+        }
+
+
+        const answer =
+            String(data.text || "").trim();
+
+
+        if (!answer) {
+
+            throw new Error(
+                "A IA não retornou um roteiro."
+            );
+
+        }
+
+
+        result.innerHTML =
+            formatCreatorResponse(answer);
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        result.innerHTML =
+            "<strong>❌ Não foi possível gerar:</strong> " +
+            error.message;
+
+    } finally {
+
+        generateCreatorButton.disabled = false;
+
+        generateCreatorButton.textContent =
+            "🚀 Gerar roteiro";
+
+    }
+
+});
+
+</script>
+
+
+<script src="/js/sidebar.js"></script>
+
+</body>
+</html>

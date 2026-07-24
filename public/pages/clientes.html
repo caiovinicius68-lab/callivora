@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CalLivora - Clientes</title>
+
+<link rel="stylesheet" href="/style.css">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0b1020;
+    color:white;
+}
+
+.container{
+    padding:40px;
+}
+
+h1{
+    font-size:36px;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:#9ba5c6;
+    margin-bottom:30px;
+}
+
+.card{
+    background:#151c35;
+    padding:25px;
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:16px 20px;
+}
+
+.field-full{
+    grid-column:1 / -1;
+}
+
+label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:600;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    background:#20294a;
+    color:white;
+    border:1px solid #303b65;
+    border-radius:10px;
+    outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#7c6cff;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+button{
+    padding:13px 18px;
+    background:#6d5dfc;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    filter:brightness(1.08);
+}
+
+.secondary-button{
+    background:#20294a;
+}
+
+.danger-button{
+    background:#68283c;
+}
+
+.whatsapp-button{
+    background:#166c4a;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
+    margin-top:25px;
+}
+
+.stat-card{
+    background:#151c35;
+    padding:22px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.04);
+}
+
+.stat-card span{
+    color:#9ba5c6;
+    font-size:13px;
+}
+
+.stat-card strong{
+    display:block;
+    margin-top:8px;
+    font-size:28px;
+}
+
+.toolbar{
+    display:flex;
+    gap:12px;
+    margin-top:25px;
+}
+
+.toolbar input{
+    flex:1;
+}
+
+.clients-list{
+    display:grid;
+    gap:16px;
+    margin-top:20px;
+}
+
+.client-card{
+    background:#151c35;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:18px;
+    padding:22px;
+}
+
+.client-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+}
+
+.client-name{
+    margin:0;
+    font-size:22px;
+}
+
+.client-phone{
+    margin-top:6px;
+    color:#b8b4c6;
+}
+
+.client-meta{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+    margin-top:18px;
+}
+
+.meta-box{
+    background:#20294a;
+    border-radius:12px;
+    padding:14px;
+}
+
+.meta-box span{
+    display:block;
+    color:#9ba5c6;
+    font-size:12px;
+}
+
+.meta-box strong{
+    display:block;
+    margin-top:5px;
+}
+
+.client-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+.notes{
+    margin-top:16px;
+    padding:14px;
+    background:#10162c;
+    border-radius:12px;
+    color:#d9d6e0;
+}
+
+.empty-state{
+    text-align:center;
+    color:#9ba5c6;
+    padding:35px;
+}
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.72);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:20000;
+}
+
+.modal-overlay.open{
+    display:flex;
+}
+
+.modal{
+    width:min(600px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    background:#151c35;
+    border:1px solid rgba(169,98,255,.25);
+    border-radius:20px;
+    padding:25px;
+}
+
+.modal h2{
+    margin-top:0;
+}
+
+.history-list{
+    display:grid;
+    gap:10px;
+    margin-top:16px;
+}
+
+.history-item{
+    background:#20294a;
+    padding:14px;
+    border-radius:12px;
+}
+
+.modal-actions{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+}
+
+.status{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:12px;
+    background:#163f35;
+    color:#61e6b5;
+}
+
+@media(max-width:1050px){
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .client-meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .container{
+        padding:20px;
+    }
+
+    .form-grid,
+    .stats-grid,
+    .client-meta{
+        grid-template-columns:1fr;
+    }
+
+    .field-full{
+        grid-column:auto;
+    }
+
+    .client-top{
+        flex-direction:column;
+    }
+
+    .toolbar{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body class="internal-page">
+
+<div class="container">
+
+<h1>🚀 Clientes</h1>
+
+<p class="subtitle">
+Cadastre clientes, acompanhe compras, retorno, histórico e valor total gasto.
+</p>
+
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<span>👥 Clientes cadastrados</span>
+<strong id="statClients">0</strong>
+</div>
+
+<div class="stat-card">
+<span>💰 Faturamento registrado</span>
+<strong id="statRevenue">R$ 0,00</strong>
+</div>
+
+<div class="stat-card">
+<span>🔁 Clientes recorrentes</span>
+<strong id="statRecurring">0</strong>
+</div>
+
+<div class="stat-card">
+<span>⭐ Ticket médio</span>
+<strong id="statAverage">R$ 0,00</strong>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>➕ Novo cliente</h2>
+
+<div class="form-grid">
+
+<div>
+<label for="clientName">
+Nome do cliente
+</label>
+
+<input
+id="clientName"
+type="text"
+placeholder="Ex: Maria Silva"
+>
+</div>
+
+
+<div>
+<label for="clientPhone">
+📱 WhatsApp
+</label>
+
+<input
+id="clientPhone"
+type="tel"
+placeholder="Ex: 11999999999"
+>
+</div>
+
+
+<div>
+<label for="clientService">
+Produto / Serviço
+</label>
+
+<input
+id="clientService"
+type="text"
+placeholder="Ex: Consulta de tarot"
+>
+</div>
+
+
+<div>
+<label for="clientValue">
+💰 Valor da compra
+</label>
+
+<input
+id="clientValue"
+type="number"
+min="0"
+step="0.01"
+placeholder="Ex: 150"
+>
+</div>
+
+
+<div>
+<label for="clientDate">
+📅 Data
+</label>
+
+<input
+id="clientDate"
+type="date"
+>
+</div>
+
+
+<div class="field-full">
+<label for="clientNotes">
+📝 Observações
+</label>
+
+<textarea
+id="clientNotes"
+placeholder="Ex: Cliente demonstrou interesse em nova consulta no próximo mês."
+></textarea>
+</div>
+
+</div>
+
+<button id="saveClientButton" type="button">
+➕ Cadastrar cliente
+</button>
+
+</div>
+
+
+<div class="toolbar">
+
+<input
+id="clientSearch"
+type="search"
+placeholder="🔎 Buscar por nome ou WhatsApp..."
+>
+
+</div>
+
+
+<div id="clientsList" class="clients-list"></div>
+
+</div>
+
+
+<div id="purchaseModal" class="modal-overlay">
+
+<div class="modal">
+
+<h2>💰 Registrar nova compra</h2>
+
+<p id="purchaseClientName"></p>
+
+<label for="purchaseService">
+Produto / Serviço
+</label>
+
+<input
+id="purchaseService"
+type="text"
+placeholder="Ex: Nova consulta"
+>
+
+<label for="purchaseValue">
+Valor
+</label>
+
+<input
+id="purchaseValue"
+type="number"
+min="0"
+step="0.01"
+placeholder="Ex: 150"
+>
+
+<label for="purchaseDate">
+Data
+</label>
+
+<input
+id="purchaseDate"
+type="date"
+>
+
+<label for="purchaseNotes">
+Observação
+</label>
+
+<textarea
+id="purchaseNotes"
+placeholder="Informações sobre essa compra..."
+></textarea>
+
+<div class="modal-actions">
+
+<button id="confirmPurchaseButton" type="button">
+✅ Registrar
+</button>
+
+<button
+class="secondary-button"
+type="button"
+onclick="closePurchaseModal()"
+>
+Cancelar
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="historyModal" class="modal-overlay">
+
+<div class="modal">
+
+<h2>📋 Histórico do cliente</h2>
+
+<div id="historyContent"></div>
+
+<div class="modal-actions">
+
+<button
+class="secondary-button"
+type="button"
+onclick="closeHistoryModal()"
+>
+Fechar
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const STORAGE_KEY = "callivora_clients_v1";
+
+let clients = loadClients();
+
+let selectedClientId = null;
+
+
+function loadClients(){
+
+    try{
+
+        const stored =
+            localStorage.getItem(STORAGE_KEY);
+
+        return stored
+            ? JSON.parse(stored)
+            : [];
+
+    }catch(error){
+
+        console.error(
+            "Erro ao carregar clientes:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+function saveClients(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(clients)
+    );
+
+}
+
+
+function generateId(){
+
+    return (
+        Date.now().toString(36) +
+        Math.random().toString(36).slice(2)
+    );
+
+}
+
+
+function normalizePhone(phone){
+
+    return String(phone || "")
+        .replace(/\D/g,"");
+
+}
+
+
+function formatPhone(phone){
+
+    const clean =
+        normalizePhone(phone);
+
+    if(clean.length === 11){
+
+        return clean.replace(
+            /(\d{2})(\d{5})(\d{4})/,
+            "($1) $2-$3"
+        );
+
+    }
+
+    return clean || "-";
+
+}
+
+
+function formatMoney(value){
+
+    return Number(value || 0)
+        .toLocaleString(
+            "pt-BR",
+            {
+                style:"currency",
+                currency:"BRL"
+            }
+        );
+
+}
+
+
+function formatDate(date){
+
+    if(!date){
+        return "-";
+    }
+
+    const [year,month,day] =
+        date.split("-");
+
+    return `${day}/${month}/${year}`;
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function getClientTotal(client){
+
+    return client.purchases.reduce(
+        (total,purchase) =>
+            total + Number(purchase.value || 0),
+        0
+    );
+
+}
+
+
+function getClientLastPurchase(client){
+
+    if(!client.purchases.length){
+        return null;
+    }
+
+    return [...client.purchases]
+        .sort(
+            (a,b) =>
+                String(b.date)
+                .localeCompare(String(a.date))
+        )[0];
+
+}
+
+
+function updateStats(){
+
+    const totalClients =
+        clients.length;
+
+    const totalRevenue =
+        clients.reduce(
+            (sum,client) =>
+                sum + getClientTotal(client),
+            0
+        );
+
+    const recurring =
+        clients.filter(
+            client =>
+                client.purchases.length > 1
+        ).length;
+
+    const totalPurchases =
+        clients.reduce(
+            (sum,client) =>
+                sum + client.purchases.length,
+            0
+        );
+
+    const average =
+        totalPurchases
+            ? totalRevenue / totalPurchases
+            : 0;
+
+
+    document.getElementById(
+        "statClients"
+    ).textContent =
+        totalClients;
+
+
+    document.getElementById(
+        "statRevenue"
+    ).textContent =
+        formatMoney(totalRevenue);
+
+
+    document.getElementById(
+        "statRecurring"
+    ).textContent =
+        recurring;
+
+
+    document.getElementById(
+        "statAverage"
+    ).textContent =
+        formatMoney(average);
+
+}
+
+
+function renderClients(){
+
+    const list =
+        document.getElementById(
+            "clientsList"
+        );
+
+    const search =
+        document.getElementById(
+            "clientSearch"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        clients.filter(client => {
+
+            const name =
+                client.name
+                .toLowerCase();
+
+            const phone =
+                normalizePhone(
+                    client.phone
+                );
+
+            const cleanSearch =
+                normalizePhone(search);
+
+            return (
+                name.includes(search) ||
+                (
+                    cleanSearch &&
+                    phone.includes(cleanSearch)
+                )
+            );
+
+        });
+
+
+    if(!filtered.length){
+
+        list.innerHTML = `
+            <div class="card empty-state">
+                Nenhum cliente encontrado.
+            </div>
+        `;
+
+        updateStats();
+
+        return;
+    }
+
+
+    list.innerHTML =
+        filtered
+        .map(client => {
+
+            const total =
+                getClientTotal(client);
+
+            const purchases =
+                client.purchases.length;
+
+            const average =
+                purchases
+                    ? total / purchases
+                    : 0;
+
+            const last =
+                getClientLastPurchase(client);
+
+            const recurring =
+                purchases > 1;
+
+
+            return `
+            <div class="client-card">
+
+                <div class="client-top">
+
+                    <div>
+
+                        <h3 class="client-name">
+                            ${escapeHTML(client.name)}
+                        </h3>
+
+                        <div class="client-phone">
+                            📱 ${escapeHTML(
+                                formatPhone(client.phone)
+                            )}
+                        </div>
+
+                    </div>
+
+                    <span class="status">
+                        ${
+                            recurring
+                                ? "🔁 Recorrente"
+                                : "Novo cliente"
+                        }
+                    </span>
+
+                </div>
+
+
+                <div class="client-meta">
+
+                    <div class="meta-box">
+                        <span>Compras</span>
+                        <strong>
+                            ${purchases}
+                        </strong>
+                    </div>
+
+                    <div class="meta-box">
+                        <span>Total gasto</span>
+                        <strong>
+                            ${formatMoney(total)}
+                        </strong>
+                    </div>
+
+                    <div class="meta-box">
+                        <span>Ticket médio</span>
+                        <strong>
+                            ${formatMoney(average)}
+                        </strong>
+                    </div>
+
+                    <div class="meta-box">
+                        <span>Última compra</span>
+                        <strong>
+                            ${
+                                last
+                                    ? formatDate(last.date)
+                                    : "-"
+                            }
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                ${
+                    client.notes
+                        ? `
+                        <div class="notes">
+                            📝 ${escapeHTML(client.notes)}
+                        </div>
+                        `
+                        : ""
+                }
+
+
+                <div class="client-actions">
+
+                    <button
+                        class="whatsapp-button"
+                        onclick="openWhatsApp('${client.id}')"
+                    >
+                        💬 WhatsApp
+                    </button>
+
+                    <button
+                        onclick="openPurchaseModal('${client.id}')"
+                    >
+                        + Nova compra
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        onclick="openHistoryModal('${client.id}')"
+                    >
+                        📋 Histórico
+                    </button>
+
+                    <button
+                        class="danger-button"
+                        onclick="deleteClient('${client.id}')"
+                    >
+                        🗑️ Excluir
+                    </button>
+
+                </div>
+
+            </div>
+            `;
+
+        })
+        .join("");
+
+
+    updateStats();
+
+}
+
+
+function clearForm(){
+
+    document.getElementById(
+        "clientName"
+    ).value = "";
+
+    document.getElementById(
+        "clientPhone"
+    ).value = "";
+
+    document.getElementById(
+        "clientService"
+    ).value = "";
+
+    document.getElementById(
+        "clientValue"
+    ).value = "";
+
+    document.getElementById(
+        "clientNotes"
+    ).value = "";
+
+    setToday(
+        document.getElementById(
+            "clientDate"
+        )
+    );
+
+}
+
+
+function addClient(){
+
+    const name =
+        document.getElementById(
+            "clientName"
+        ).value.trim();
+
+    const phone =
+        normalizePhone(
+            document.getElementById(
+                "clientPhone"
+            ).value
+        );
+
+    const service =
+        document.getElementById(
+            "clientService"
+        ).value.trim();
+
+    const value =
+        Number(
+            document.getElementById(
+                "clientValue"
+            ).value
+        );
+
+    const date =
+        document.getElementById(
+            "clientDate"
+        ).value;
+
+    const notes =
+        document.getElementById(
+            "clientNotes"
+        ).value.trim();
+
+
+    if(!name){
+
+        alert(
+            "Digite o nome do cliente."
+        );
+
+        return;
+    }
+
+
+    if(!phone){
+
+        alert(
+            "Digite o WhatsApp do cliente."
+        );
+
+        return;
+    }
+
+
+    const existing =
+        clients.find(
+            client =>
+                normalizePhone(
+                    client.phone
+                ) === phone
+        );
+
+
+    if(existing){
+
+        const register =
+            confirm(
+                "⚠️ Já existe um cliente com este WhatsApp.\n\nDeseja registrar esta compra no cliente existente?"
+            );
+
+
+        if(register){
+
+            if(!value){
+
+                alert(
+                    "Digite o valor da nova compra."
+                );
+
+                return;
+            }
+
+
+            existing.purchases.push({
+
+                id:generateId(),
+
+                service:
+                    service ||
+                    "Compra registrada",
+
+                value:value,
+
+                date:date,
+
+                notes:notes
+
+            });
+
+
+            saveClients();
+
+            clearForm();
+
+            renderClients();
+
+        }
+
+        return;
+    }
+
+
+    const purchases = [];
+
+
+    if(value > 0){
+
+        purchases.push({
+
+            id:generateId(),
+
+            service:
+                service ||
+                "Primeira compra",
+
+            value:value,
+
+            date:date,
+
+            notes:notes
+
+        });
+
+    }
+
+
+    clients.unshift({
+
+        id:generateId(),
+
+        name:name,
+
+        phone:phone,
+
+        notes:notes,
+
+        createdAt:
+            new Date().toISOString(),
+
+        purchases:purchases
+
+    });
+
+
+    saveClients();
+
+    clearForm();
+
+    renderClients();
+
+}
+
+
+function openWhatsApp(id){
+
+    const client =
+        clients.find(
+            item => item.id === id
+        );
+
+    if(!client){
+        return;
+    }
+
+    let phone =
+        normalizePhone(
+            client.phone
+        );
+
+
+    if(phone.length === 10 ||
+       phone.length === 11){
+
+        phone = "55" + phone;
+
+    }
+
+
+    window.open(
+        "https://wa.me/" + phone,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+function openPurchaseModal(id){
+
+    const client =
+        clients.find(
+            item => item.id === id
+        );
+
+    if(!client){
+        return;
+    }
+
+
+    selectedClientId =
+        id;
+
+
+    document.getElementById(
+        "purchaseClientName"
+    ).textContent =
+        `Cliente: ${client.name}`;
+
+
+    document.getElementById(
+        "purchaseService"
+    ).value = "";
+
+    document.getElementById(
+        "purchaseValue"
+    ).value = "";
+
+    document.getElementById(
+        "purchaseNotes"
+    ).value = "";
+
+
+    setToday(
+        document.getElementById(
+            "purchaseDate"
+        )
+    );
+
+
+    document.getElementById(
+        "purchaseModal"
+    ).classList.add("open");
+
+}
+
+
+function closePurchaseModal(){
+
+    document.getElementById(
+        "purchaseModal"
+    ).classList.remove("open");
+
+    selectedClientId =
+        null;
+
+}
+
+
+function registerPurchase(){
+
+    const client =
+        clients.find(
+            item =>
+                item.id ===
+                selectedClientId
+        );
+
+
+    if(!client){
+        return;
+    }
+
+
+    const service =
+        document.getElementById(
+            "purchaseService"
+        ).value.trim();
+
+    const value =
+        Number(
+            document.getElementById(
+                "purchaseValue"
+            ).value
+        );
+
+    const date =
+        document.getElementById(
+            "purchaseDate"
+        ).value;
+
+    const notes =
+        document.getElementById(
+            "purchaseNotes"
+        ).value.trim();
+
+
+    if(!value || value <= 0){
+
+        alert(
+            "Digite um valor válido."
+        );
+
+        return;
+    }
+
+
+    client.purchases.push({
+
+        id:generateId(),
+
+        service:
+            service ||
+            "Compra",
+
+        value:value,
+
+        date:date,
+
+        notes:notes
+
+    });
+
+
+    saveClients();
+
+    closePurchaseModal();
+
+    renderClients();
+
+}
+
+
+function openHistoryModal(id){
+
+    const client =
+        clients.find(
+            item => item.id === id
+        );
+
+
+    if(!client){
+        return;
+    }
+
+
+    const history =
+        document.getElementById(
+            "historyContent"
+        );
+
+
+    const purchases =
+        [...client.purchases]
+        .sort(
+            (a,b) =>
+                String(b.date)
+                .localeCompare(
+                    String(a.date)
+                )
+        );
+
+
+    history.innerHTML = `
+
+        <h3>
+            ${escapeHTML(client.name)}
+        </h3>
+
+        <p>
+            📱 ${escapeHTML(
+                formatPhone(client.phone)
+            )}
+        </p>
+
+        <p>
+            <strong>Total gasto:</strong>
+            ${formatMoney(
+                getClientTotal(client)
+            )}
+        </p>
+
+        <p>
+            <strong>Total de compras:</strong>
+            ${purchases.length}
+        </p>
+
+        <div class="history-list">
+
+            ${
+                purchases.length
+                ?
+                purchases
+                .map(
+                    purchase => `
+                    <div class="history-item">
+
+                        <strong>
+                            ${escapeHTML(
+                                purchase.service
+                            )}
+                        </strong>
+
+                        <div>
+                            💰 ${formatMoney(
+                                purchase.value
+                            )}
+                        </div>
+
+                        <div>
+                            📅 ${formatDate(
+                                purchase.date
+                            )}
+                        </div>
+
+                        ${
+                            purchase.notes
+                            ?
+                            `<div>
+                                📝 ${escapeHTML(
+                                    purchase.notes
+                                )}
+                            </div>`
+                            :
+                            ""
+                        }
+
+                    </div>
+                    `
+                )
+                .join("")
+                :
+                "<p>Nenhuma compra registrada.</p>"
+            }
+
+        </div>
+    `;
+
+
+    document.getElementById(
+        "historyModal"
+    ).classList.add("open");
+
+}
+
+
+function closeHistoryModal(){
+
+    document.getElementById(
+        "historyModal"
+    ).classList.remove("open");
+
+}
+
+
+function deleteClient(id){
+
+    const client =
+        clients.find(
+            item => item.id === id
+        );
+
+
+    if(!client){
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            `Excluir o cliente "${client.name}" e todo o histórico dele?`
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    clients =
+        clients.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveClients();
+
+    renderClients();
+
+}
+
+
+function setToday(input){
+
+    const now =
+        new Date();
+
+    const localDate =
+        new Date(
+            now.getTime() -
+            now.getTimezoneOffset() *
+            60000
+        )
+        .toISOString()
+        .slice(0,10);
+
+
+    input.value =
+        localDate;
+
+}
+
+
+document.getElementById(
+    "saveClientButton"
+).addEventListener(
+    "click",
+    addClient
+);
+
+
+document.getElementById(
+    "confirmPurchaseButton"
+).addEventListener(
+    "click",
+    registerPurchase
+);
+
+
+document.getElementById(
+    "clientSearch"
+).addEventListener(
+    "input",
+    renderClients
+);
+
+
+setToday(
+    document.getElementById(
+        "clientDate"
+    )
+);
+
+
+renderClients();
+
+</script>
+
+
+<script src="/js/sidebar.js"></script>
+
+</body>
+</html>

@@ -30,5 +30,9 @@
     "whatsapp"
   ],
   "author": "CalLivora",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "openai": "^6.49.0"
+  }
 }

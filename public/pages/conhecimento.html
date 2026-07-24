@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CalLivora - Conhecimento</title>
+
+<link rel="stylesheet" href="/style.css">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0b1020;
+    color:white;
+}
+
+.container{
+    padding:40px;
+}
+
+h1{
+    font-size:38px;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#9ba5c6;
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+}
+
+.mode-card{
+    background:#151c35;
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:20px;
+    padding:25px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.mode-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(169,98,255,.4);
+}
+
+.mode-card.active{
+    border-color:#8b5cf6;
+    box-shadow:0 0 0 2px rgba(139,92,246,.15);
+}
+
+.icon{
+    font-size:36px;
+}
+
+.mode-card h2{
+    margin:14px 0 8px;
+}
+
+.mode-card p{
+    color:#aeb8dc;
+    line-height:1.5;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:10px;
+    padding:7px 12px;
+    border-radius:20px;
+    background:#20294a;
+    color:#ccd4ff;
+    font-size:13px;
+}
+
+.workspace{
+    background:#151c35;
+    margin-top:28px;
+    padding:25px;
+    border-radius:20px;
+}
+
+label{
+    display:block;
+    margin-top:18px;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #303b65;
+    border-radius:11px;
+    background:#20294a;
+    color:white;
+    outline:none;
+}
+
+textarea{
+    resize:vertical;
+    min-height:110px;
+}
+
+button{
+    border:none;
+    border-radius:11px;
+    padding:14px 22px;
+    background:#6d5dfc;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    filter:brightness(1.08);
+}
+
+button:disabled{
+    opacity:.55;
+    cursor:wait;
+}
+
+.generate-button{
+    margin-top:20px;
+}
+
+.result{
+    display:none;
+    margin-top:24px;
+    padding:24px;
+    border-radius:17px;
+    background:#10162c;
+    line-height:1.7;
+}
+
+.result h3{
+    color:#b879ff;
+}
+
+.visual-panel{
+    display:none;
+}
+
+.image-chat{
+    display:none;
+    margin-top:28px;
+}
+
+.image-message{
+    background:#10162c;
+    border-radius:18px;
+    padding:22px;
+    margin-top:15px;
+}
+
+.user-request{
+    background:#20294a;
+    padding:14px 17px;
+    border-radius:13px;
+    margin-bottom:18px;
+}
+
+.generated-image{
+    display:block;
+    width:100%;
+    max-width:650px;
+    max-height:750px;
+    object-fit:contain;
+    margin:0 auto;
+    border-radius:17px;
+    background:#080c18;
+}
+
+.image-status{
+    text-align:center;
+    padding:35px;
+    color:#c5bed9;
+}
+
+.refine-area{
+    margin-top:22px;
+    padding:22px;
+    background:#10162c;
+    border-radius:18px;
+}
+
+.refine-area textarea{
+    min-height:85px;
+}
+
+.refine-button{
+    margin-top:14px;
+}
+
+.visual-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.small-help{
+    color:#8f99bb;
+    font-size:13px;
+    margin-top:7px;
+}
+
+@media(max-width:850px){
+
+    .container{
+        padding:20px;
+    }
+
+    .grid,
+    .visual-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body class="internal-page">
+
+<div class="container">
+
+<h1>💎 Conhecimento</h1>
+
+<p class="subtitle">
+Conteúdo, copywriting, marketing e criação visual com o CalLivora.
+</p>
+
+
+<div class="grid">
+
+<div class="mode-card active" data-mode="viral">
+
+<div class="icon">🎬</div>
+
+<h2>Conteúdo Viral</h2>
+
+<p>
+Crie ideias, ganchos, séries e conteúdos com foco em retenção e compartilhamento.
+</p>
+
+<span class="tag">Viralização</span>
+
+</div>
+
+
+<div class="mode-card" data-mode="copy">
+
+<div class="icon">✍️</div>
+
+<h2>Copywriting</h2>
+
+<p>
+Copies, anúncios, títulos, CTAs, ofertas, legendas e textos para conversão.
+</p>
+
+<span class="tag">Conversão</span>
+
+</div>
+
+
+<div class="mode-card" data-mode="marketing">
+
+<div class="icon">📈</div>
+
+<h2>Marketing</h2>
+
+<p>
+Posicionamento, campanhas, funis, conteúdo, aquisição e estratégias de crescimento.
+</p>
+
+<span class="tag">Estratégia</span>
+
+</div>
+
+
+<div class="mode-card" data-mode="visual">
+
+<div class="icon">🎨</div>
+
+<h2>Criador Visual</h2>
+
+<p>
+Crie imagens para Instagram, Stories, capas e conteúdos de tarot, magia e espiritualidade.
+</p>
+
+<span class="tag">Gerador de imagens</span>
+
+</div>
+
+</div>
+
+
+<div class="workspace">
+
+<h2 id="workspaceTitle">
+🎬 Conteúdo Viral
+</h2>
+
+
+<div id="textPanel">
+
+<label for="textRequest">
+O que você quer criar?
+</label>
+
+<textarea
+id="textRequest"
+placeholder="Ex: Crie 10 ideias de vídeos para um perfil de tarot no Instagram."
+></textarea>
+
+<button
+id="generateTextButton"
+class="generate-button"
+type="button"
+>
+✦ Gerar com IA
+</button>
+
+<div
+id="textResult"
+class="result"
+></div>
+
+</div>
+
+
+<div id="visualPanel" class="visual-panel">
+
+<div class="visual-grid">
+
+<div>
+
+<label for="imageFormat">
+Formato
+</label>
+
+<select id="imageFormat">
+
+<option value="1024x1536">
+📱 Vertical — Instagram / Feed
+</option>
+
+<option value="1024x1024">
+⬜ Quadrado — Post
+</option>
+
+<option value="1536x1024">
+🖥️ Horizontal — Banner
+</option>
+
+</select>
+
+</div>
+
+
+<div>
+
+<label for="imageStyle">
+Estilo
+</label>
+
+<select id="imageStyle">
+
+<option>Místico cinematográfico</option>
+<option>Luxo espiritual</option>
+<option>Dark esotérico</option>
+<option>Bruxaria moderna</option>
+<option>Editorial premium</option>
+<option>Minimalista místico</option>
+<option>Fantasia realista</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<label for="imageRequest">
+Descreva a imagem
+</label>
+
+<textarea
+id="imageRequest"
+placeholder="Ex: Crie uma arte para Instagram sobre magia de proteção, com atmosfera mística, cristais, luz da lua e espaço para uma frase."
+></textarea>
+
+<p class="small-help">
+Descreva o tema, elementos, atmosfera e o que deseja comunicar.
+</p>
+
+
+<button
+id="generateImageButton"
+class="generate-button"
+type="button"
+>
+✨ Criar imagem
+</button>
+
+
+<div
+id="imageChat"
+class="image-chat"
+></div>
+
+
+<div
+id="refineArea"
+class="refine-area"
+style="display:none;"
+>
+
+<h3>✏️ Quer mudar alguma coisa?</h3>
+
+<p>
+Continue conversando com o Criador Visual.
+</p>
+
+<textarea
+id="imageRefinement"
+placeholder="Ex: Deixa mais escura, adiciona cristais roxos e tira as velas."
+></textarea>
+
+<button
+id="refineImageButton"
+class="refine-button"
+type="button"
+>
+✨ Gerar nova versão
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let currentMode = "viral";
+
+let visualConversation = [];
+
+let currentImage = null;
+
+
+const cards =
+    document.querySelectorAll(".mode-card");
+
+const workspaceTitle =
+    document.getElementById("workspaceTitle");
+
+const textPanel =
+    document.getElementById("textPanel");
+
+const visualPanel =
+    document.getElementById("visualPanel");
+
+
+cards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        cards.forEach(item =>
+            item.classList.remove("active")
+        );
+
+        card.classList.add("active");
+
+        currentMode =
+            card.dataset.mode;
+
+
+        if(currentMode === "visual"){
+
+            workspaceTitle.textContent =
+                "🎨 Criador Visual";
+
+            textPanel.style.display =
+                "none";
+
+            visualPanel.style.display =
+                "block";
+
+        }else{
+
+            visualPanel.style.display =
+                "none";
+
+            textPanel.style.display =
+                "block";
+
+            updateTextMode();
+
+        }
+
+    });
+
+});
+
+
+function updateTextMode(){
+
+    const input =
+        document.getElementById("textRequest");
+
+
+    if(currentMode === "viral"){
+
+        workspaceTitle.textContent =
+            "🎬 Conteúdo Viral";
+
+        input.placeholder =
+            "Ex: Crie 10 ideias de vídeos virais sobre tarot para Instagram.";
+
+    }
+
+
+    if(currentMode === "copy"){
+
+        workspaceTitle.textContent =
+            "✍️ Copywriting";
+
+        input.placeholder =
+            "Ex: Crie uma copy para divulgar uma leitura de tarot.";
+
+    }
+
+
+    if(currentMode === "marketing"){
+
+        workspaceTitle.textContent =
+            "📈 Marketing";
+
+        input.placeholder =
+            "Ex: Crie uma estratégia para crescer um perfil sobre cristais.";
+
+    }
+
+}
+
+
+function formatText(text){
+
+    let html =
+        String(text || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;");
+
+
+    html =
+        html.replace(
+            /\*\*(.+?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+
+    html =
+        html.replace(
+            /^### (.+)$/gm,
+            "<h4>$1</h4>"
+        );
+
+
+    html =
+        html.replace(
+            /^## (.+)$/gm,
+            "<h3>$1</h3>"
+        );
+
+
+    html =
+        html.replace(
+            /^# (.+)$/gm,
+            "<h2>$1</h2>"
+        );
+
+
+    html =
+        html.replace(/\n/g,"<br>");
+
+
+    return html;
+
+}
+
+
+document
+.getElementById("generateTextButton")
+.addEventListener("click", async () => {
+
+    const request =
+        document
+        .getElementById("textRequest")
+        .value
+        .trim();
+
+
+    if(!request){
+
+        alert("Digite o que deseja criar.");
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "generateTextButton"
+        );
+
+    const result =
+        document.getElementById(
+            "textResult"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "⏳ CalLivora está criando...";
+
+    result.style.display =
+        "block";
+
+    result.innerHTML =
+        "🧠 Analisando seu pedido...";
+
+
+    let instruction = "";
+
+
+    if(currentMode === "viral"){
+
+        instruction = `
+Atue como estrategista de conteúdo viral.
+
+Crie ideias específicas, ganchos fortes,
+estrutura de retenção, formatos,
+CTA e possibilidades de série.
+
+Priorize Instagram, TikTok e Reels.
+`;
+
+    }
+
+
+    if(currentMode === "copy"){
+
+        instruction = `
+Atue como copywriter profissional.
+
+Crie a copy solicitada e também
+variações de gancho, título e CTA.
+
+Adapte a linguagem ao público e objetivo.
+`;
+
+    }
+
+
+    if(currentMode === "marketing"){
+
+        instruction = `
+Atue como estrategista de marketing.
+
+Analise posicionamento, público,
+conteúdo, aquisição, oferta,
+funil e próximos passos.
+`;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                "/api/chat",
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        message:
+`${instruction}
+
+PEDIDO DO USUÁRIO:
+
+${request}`,
+
+                        context:"[]"
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                "Erro ao gerar conteúdo."
+            );
+
+        }
+
+
+        result.innerHTML =
+            formatText(data.text);
+
+
+    }catch(error){
+
+        result.innerHTML =
+            "❌ " + error.message;
+
+    }finally{
+
+        button.disabled = false;
+
+        button.textContent =
+            "✦ Gerar com IA";
+
+    }
+
+});
+
+
+function buildImagePrompt(){
+
+    const request =
+        document
+        .getElementById("imageRequest")
+        .value
+        .trim();
+
+    const style =
+        document
+        .getElementById("imageStyle")
+        .value;
+
+
+    return `
+Crie uma imagem profissional para conteúdo digital.
+
+PEDIDO:
+${request}
+
+ESTILO:
+${style}
+
+CONTEXTO DA MARCA:
+O conteúdo pode envolver tarot,
+espiritualidade, magia, cristais,
+pedras, simbologia, astrologia
+ou temas relacionados.
+
+DIREÇÃO:
+Visual profissional e impactante.
+Composição organizada.
+Boa hierarquia visual.
+Atmosfera coerente com o tema.
+Evitar aparência genérica.
+`;
+
+}
+
+
+async function requestImage(prompt){
+
+    const size =
+        document
+        .getElementById("imageFormat")
+        .value;
+
+
+    const response =
+        await fetch(
+            "/api/image",
+            {
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body:JSON.stringify({
+                    prompt,
+                    size
+                })
+
+            }
+        );
+
+
+    const data =
+        await response.json();
+
+
+    if(!response.ok){
+
+        throw new Error(
+            data.error ||
+            "Não foi possível gerar a imagem."
+        );
+
+    }
+
+
+    if(!data.image){
+
+        throw new Error(
+            "Nenhuma imagem foi recebida."
+        );
+
+    }
+
+
+    return data.image;
+
+}
+
+
+function addImageToConversation(
+    userText,
+    image
+){
+
+    const chat =
+        document.getElementById(
+            "imageChat"
+        );
+
+
+    chat.style.display =
+        "block";
+
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        "image-message";
+
+
+    const request =
+        document.createElement("div");
+
+
+    request.className =
+        "user-request";
+
+
+    request.textContent =
+        "Você: " + userText;
+
+
+    const label =
+        document.createElement("h3");
+
+
+    label.textContent =
+        "✦ CalLivora";
+
+
+    const img =
+        document.createElement("img");
+
+
+    img.className =
+        "generated-image";
+
+
+    img.src =
+        image;
+
+
+    img.alt =
+        "Imagem criada pelo CalLivora";
+
+
+    message.append(
+        request,
+        label,
+        img
+    );
+
+
+    chat.appendChild(
+        message
+    );
+
+
+    message.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+}
+
+
+document
+.getElementById("generateImageButton")
+.addEventListener("click", async () => {
+
+    const request =
+        document
+        .getElementById("imageRequest")
+        .value
+        .trim();
+
+
+    if(!request){
+
+        alert(
+            "Descreva a imagem que deseja criar."
+        );
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "generateImageButton"
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "🎨 Criando imagem...";
+
+
+    const chat =
+        document.getElementById(
+            "imageChat"
+        );
+
+
+    chat.style.display =
+        "block";
+
+
+    chat.innerHTML = `
+        <div class="image-message">
+            <div class="image-status">
+                ✨ CalLivora está criando sua imagem...
+            </div>
+        </div>
+    `;
+
+
+    try{
+
+        const prompt =
+            buildImagePrompt();
+
+
+        const image =
+            await requestImage(
+                prompt
+            );
+
+
+        currentImage =
+            image;
+
+
+        visualConversation = [
+            request
+        ];
+
+
+        chat.innerHTML =
+            "";
+
+
+        addImageToConversation(
+            request,
+            image
+        );
+
+
+        document
+        .getElementById(
+            "refineArea"
+        )
+        .style.display =
+            "block";
+
+
+    }catch(error){
+
+        chat.innerHTML = `
+            <div class="image-message">
+                ❌ ${error.message}
+            </div>
+        `;
+
+    }finally{
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "✨ Criar imagem";
+
+    }
+
+});
+
+
+document
+.getElementById("refineImageButton")
+.addEventListener("click", async () => {
+
+    const refinement =
+        document
+        .getElementById(
+            "imageRefinement"
+        )
+        .value
+        .trim();
+
+
+    if(!refinement){
+
+        alert(
+            "Digite o que deseja alterar."
+        );
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            "refineImageButton"
+        );
+
+
+    button.disabled =
+        true;
+
+    button.textContent =
+        "🎨 Refazendo...";
+
+
+    try{
+
+        visualConversation.push(
+            refinement
+        );
+
+
+        const originalRequest =
+            document
+            .getElementById(
+                "imageRequest"
+            )
+            .value
+            .trim();
+
+
+        const style =
+            document
+            .getElementById(
+                "imageStyle"
+            )
+            .value;
+
+
+        const history =
+            visualConversation
+            .map(
+                (item,index) =>
+                    `${index + 1}. ${item}`
+            )
+            .join("\n");
+
+
+        const prompt = `
+Crie uma NOVA VERSÃO da imagem solicitada.
+
+PEDIDO ORIGINAL:
+${originalRequest}
+
+ESTILO:
+${style}
+
+HISTÓRICO DE ALTERAÇÕES:
+${history}
+
+ALTERAÇÃO MAIS RECENTE:
+${refinement}
+
+Mantenha tudo que não foi solicitado
+para mudar.
+
+A nova versão deve respeitar
+o conceito original e incorporar
+a alteração mais recente.
+`;
+
+
+        const image =
+            await requestImage(
+                prompt
+            );
+
+
+        currentImage =
+            image;
+
+
+        addImageToConversation(
+            refinement,
+            image
+        );
+
+
+        document
+        .getElementById(
+            "imageRefinement"
+        )
+        .value = "";
+
+
+    }catch(error){
+
+        alert(
+            "Erro: " +
+            error.message
+        );
+
+    }finally{
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "✨ Gerar nova versão";
+
+    }
+
+});
+
+</script>
+
+
+<script src="/js/sidebar.js"></script>
+
+</body>
+</html>
